@@ -1,0 +1,33 @@
+\documentclass[]{article}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{color}
+
+%opening
+\title{Complex Exponential Function}
+\author{Vincent La}
+
+\begin{document}
+
+\maketitle
+
+\section{Complex Sine and Cosine}
+Let $z \in \mathbb{C}$
+\[\cos(z) = \frac{e^{iz} + e^{-iz}}{2}\]
+\[\sin(z) = \frac{e^{iz} - e^{-iz}}{2i}\]
+	
+\subsection{Derivatives}
+\[\frac{d}{dz} \cos(z) = -\sin(z) \]
+
+\begin{proof}
+	\[\begin{aligned}
+		\frac{d}{dz} \cos(z)
+		&= \frac{d}{dz} \frac{e^{iz} + e^{-iz}}{2} \\
+		&= \frac{ie^{iz} - ie^{-iz}}{2} \\
+		&= \frac{i(e^{iz} - e^{-iz})}{2} \cdot \color{blue}\frac{i}{i} \\
+		&= \frac{i^2(e^{iz} - e^{-iz})}{2i} \\
+		&= -(\frac{e^{iz} - e^{-iz}}{2i}) = -\sin(z)
+	\end{aligned}\]
+\end{proof}
+
+\end{document}

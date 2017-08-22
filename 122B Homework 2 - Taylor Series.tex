@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 2}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		August 10, 2017
+	\end{center}
+	
+	\begin{enumerate}
+		\item[1.] Expand $f(z) = \sin{z}$ into a Taylor series about the point $z_0 = \frac{\pi}{6}$.
+		\paragraph{Solution}
+		\[\begin{aligned}
+		\sin{z}
+		&= \sum^{\infty}_{n=0} (-1)^n \frac{x^{2n+1}}{(2n+1)!} &\text{In general} \\
+		&= \sum^{\infty}_{n=0} (-1)^n \frac{(\frac{\pi}{6})^{2n+1}}{(2n+1)!} \\
+		&= \frac{(-1)^0(\frac{\pi}{6})}{1!} - \frac{(-1)(\frac{\pi}{6})^{2+1}}{3!} +
+		   \frac{1(\frac{\pi}{6})^5}{5!} + ... \\
+		&= \frac{\pi}{6} - \frac{\frac{\pi}{6}^3}{3!} + \frac{\frac{\pi}{6}^5}{5!} + ...
+		\end{aligned}\]
+		
+		\item[2.] Expand $f(z) = \log{1 + z}$ into a MacLaurin series.
+		\paragraph{Solution}
+		Because the derivatives of $\log{1 + z}$ are $f^{0} = \log{1+z}$, $f^{1} = \frac{1}{1+z}$,
+		$f^{2} = \frac{-1}{(1+z)^2}$, ...
+		the MacLaurin series expansion (Taylor series about $z_0 = 0$) is
+		\[
+		\begin{aligned}
+		\log(1 + z_0) \cdot ... + \frac{\frac{1}{1+z_0}}{1!}\cdot z +
+		\frac{\frac{-1}{(1+z_0)^2}}{2!}\cdot z^2
+		&= \log(1)\cdot ... + \frac{\frac{1}{1 + 0}}{1}\cdot z - \frac{\frac{-1}{(1+0)^2}}{2!} \cdot z^2 + ... \\
+		&= 0 + z - \frac{z^2}{2!} + ...\\
+		\end{aligned}
+		\]
+		\item[3.] Derive
+		\[\frac{1}{1-z} = \sum^{\infty}_{n=0} \frac{(z-i)^n}{(1-i)^{n+1}} \]
+		which converges for $|z - i| < \sqrt{2}$.
+		\begin{proof}
+			First, we know that
+			\[\frac{1}{1-z} = \sum^{\infty}_{n=0} z^n \]
+			with radius of convergence $|z| < 1$. Now, because
+			\[\frac{1}{1-z} = \frac{1}{1-i}\cdot\frac{1}{1 - \frac{z-i}{1-i}}\]
+			if we change $z = \frac{z-i}{1-i}$
+			we get
+			\[\begin{aligned}
+			\frac{1}{1-z}
+			&= \frac{1}{1-i}\cdot \sum^{\infty}_{n=0} (\frac{z-i}{1-i})^n \\
+			&= \sum^{\infty}_{n=0} \frac{(z-i)^n}{(1-i)^{n+1}}
+			\end{aligned}\]
+			
+			Furthermore, by the same change of variables
+			\[\begin{aligned}
+			|z| < 1 \implies |\frac{z-i}{1-i}| &< 1 \\
+			|z-i| &< |1-i| \\
+			|z-i| &< \sqrt{1^2 + (-1)^2} \\
+			|z-i| &< \sqrt{2}
+			\end{aligned}\]
+			
+			as we set out to prove.
+		\end{proof}
+	\item[4.] Using $\cos{z} = -\sin{z - \frac{\pi}{2}}$, expand $\cos{z}$ into a Taylor series about the point $z_0 = \frac{\pi}{2}$.
+	
+	\paragraph{Solution} First, let's compute the first few derivatives of $\cos{z}$.
+	
+	\[
+	\begin{aligned}
+		f^{(0)} &= \cos{z} = -\sin{z - \frac{\pi}{2}} \\
+		f^{(1)} &= -\sin{z} = -\sin{z} \\
+		f^{(2)} &= -\cos{z} = +\sin{z - \frac{\pi}{2}} \\
+		f^{(3)} &= \sin{z} = \sin{z} \\
+	\end{aligned}
+	\]
+	
+	Because $\cos{z}$ repeats this same pattern for every consecutive four orders of derivatives, its Taylor Series about $\frac{\pi}{2}$ has terms which cancel each other out so $\cos{\frac{\pi}{2}} = 0$ as expected.
+	
+\end{enumerate}
+\end{document}

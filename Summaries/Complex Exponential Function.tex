@@ -1,0 +1,57 @@
+\documentclass[]{article}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{color}
+
+%opening
+\title{Complex Exponential Function}
+\author{Vincent La}
+
+\begin{document}
+
+\maketitle
+
+\section{Complex Exponential Function}
+The exponential function, when extended to the complex numbers, is defined as
+\[e^z = e^{x}\cos(y) + ie^{x}\sin(y) \]
+
+\subsection{$e^z$ is entire}
+\begin{itemize}
+	\item \textbf{Proposition 3.2} If $f_x$ and $f_y$ exist, are continuous in an neighborhood of $z$, and satisfying the Cauchy-Riemann equations, then $f$ is differentiable there.
+	\item \textbf{Definition:} $f$ is entire if it is differentiable everywhere. In terms of the above proposition, that means its partial derivatives are continuous and satisfy the Cauchy-Riemann equations everywhere.
+\end{itemize}
+
+\begin{proof}
+	To prove that $e^z$ is entire, we need to first show that its partial derivatives satisfy the Cauchy-Riemann Equations.
+	
+	\[\begin{aligned}
+		u_y &= -e^x\sin(y) \\
+		-v_x &= -e^x\sin(y) \\ 
+		\\
+		u_x &= e^x\cos(y) \\
+		v_y &= e^x\cos(y) \\
+	\end{aligned}\]
+	
+	Furthermore, we know that these partial derivatives are products of continuous functions, so they themselves are continuous. Because $e^z$ has continuous partial derivatives everywhere satisfying the Cauchy-Riemann Equations, it is differentiable everywhere. Therefore, it is an entire function.
+\end{proof}
+
+\section{Complex Sine and Cosine}
+Let $z \in \mathbb{C}$
+\[\cos(z) = \frac{e^{iz} + e^{-iz}}{2}\]
+\[\sin(z) = \frac{e^{iz} - e^{-iz}}{2i}\]
+	
+\subsection{Derivatives}
+\[\frac{d}{dz} \cos(z) = -\sin(z) \]
+
+\begin{proof}
+	\[\begin{aligned}
+		\frac{d}{dz} \cos(z)
+		&= \frac{d}{dz} \frac{e^{iz} + e^{-iz}}{2} \\
+		&= \frac{ie^{iz} - ie^{-iz}}{2} \\
+		&= \frac{i(e^{iz} - e^{-iz})}{2} \cdot \color{blue}\frac{i}{i} \\
+		&= \frac{i^2(e^{iz} - e^{-iz})}{2i} \\
+		&= -(\frac{e^{iz} - e^{-iz}}{2i}) = -\sin(z)
+	\end{aligned}\]
+\end{proof}
+
+\end{document}

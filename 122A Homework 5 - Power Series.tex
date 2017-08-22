@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 5}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122A \\
+		July 23, 2017
+	\end{center}
+	
+	\section{Monday and Tuesday}
+	\begin{enumerate}
+		\item[4.3] Evaluate $\int_C f$ where $f(z) = x^2 + iy^2$ as in Example 1, but where $C$ is given by $z(t) = t^2 + it^2$, $0 \leq t \leq 1$.
+		
+		\paragraph{Solution} This implies $\dot{z}(t) = \cos(t) - i\sin(t)$, so
+		\[\int^b_a f(z(t))\dot{z}(t) dt = \int^{2\pi}_0 (\frac{\sin(t)}{\sin^2(t) + \cos^2(t)} - i\frac{\cos(t)}{\sin^2(t)+\cos^2(t)})(\cos(t) - i\sin(t) dt\]
+		
+		This in turn simplifies to
+		
+		\[\begin{aligned}
+		\int^{2\pi}_{0} (\sin(t) - i\cos(t))(\cos(t) - i\sin(t)) dt &=
+		\int^{2\pi}_{0} \sin^2(t) + \cos^2(t) dt \\
+		&= -\int^{2\pi}_{0} 1 dt \\
+		&= -2\pi \\
+		\end{aligned}\]
+		
+		This is unlike Example 2, where the answer was $2\pi i$. Now, line integrals should be independent of parameterization, but this parameterization is actually the same as the one in Example 2 but moving in the opposite direction.
+		
+		\item[4.5] Use the Fundamental Theorem of Calculus (Proposition 4.12) to prove that if $F$ is analytic on a region and $F'(z) = 0$ then $F$ is constant.
+		
+		\begin{proof}
+			Let $F$ be any analytic function where $F'(z) = 0$. Let the bounds of integration $a, b \in \mathbb{Z}$ be arbitrary. First, the Fundamental Theorem of Calculus states that
+			\[0 = F'(z) = \int_C f(z) dz = F(z(b))] - F(z(a)) \]
+			
+			Thus,
+			\[0 = \int 0 dz = F(z(b)) - F(z(a)) \]
+			
+			This is only true if $a = b$ or $F$ is constant. However, since $a, b$ arbitrary, it must be that $F$ is constant.
+		\end{proof}
+	\end{enumerate}
+	
+	\section{Wednesday and Thursday}
+	\begin{enumerate}
+		\item Prove that $\lim_{n \rightarrow \infty} \xi^n = 0$ whenever $|\xi| < 1$. Conversely, prove that if $|\xi| \geq 1$ then $\{\xi^n\}$ is a divergent sequence.
+		
+		\begin{enumerate}
+			\item $\lim_{n \rightarrow \infty} \xi^n = 0$ whenever $|\xi| < 1$
+			
+			\begin{proof}
+				Let $\epsilon > 0$ be arbitrary and let $\delta = \frac{1}{\epsilon}.$ Then, show that whenever $|n| > \delta$ that $|f(n) - 0| < \epsilon$. Notice,
+				$n > \delta = \frac{1}{\epsilon}$ implies that
+				\[|\xi^n| < |\xi^\frac{1}{\epsilon}| < 1\]
+				because $|\xi| < 1$.
+				
+				\bigskip
+				
+				This further implies that $|\xi^\frac{1}{\epsilon}|^\epsilon < \epsilon$, or
+				$|\xi^n| < |\xi^1| < \epsilon$ as we set out to prove.
+			\end{proof}
+			
+			\item
+			
+		\end{enumerate}
+	\end{enumerate}
+	
+\subsection{Extra Problems}
+\begin{enumerate}
+	\item[5.1] Find the powers series expansion of $f(z) = z^2$ around $z = 2$.
+	
+	In general, a Taylor Series about a function is 
+	\[\sum^{\infty}_{n=0} \frac{f^{(n)}(a)}{n!}(z-a)^n \]
+	
+	Filling the terms in, here it is $4 + 4(z-2) + (z-2)^2$.
+	
+	\item[5.2] Find power series expansion for $e^z$ about any point $a$
+	
+	\item[5.3] Show that an odd entire function only has odd terms in its power series expansion about $z = 0$. 
+	
+	\begin{proof}
+		(Insert proof that $f$ even implies $f'$ odd and that $f$ odd implies $f'$ even here).
+		
+		If an odd function is entire, it has a power series expansion which we can write
+		\[
+		\frac{f^{(0)}(0)}{0!}z^0 +
+		\frac{f^{(1)}(0)}{1!}z^1 +
+		\frac{f^{(2)}(0)}{2!}z^2 + 
+		\frac{f^{(3)}(0)}{3!}z^3 + ... \]
+		
+		Now, suppose that if the $n^{th}$ term is odd, then the $n + 1^{th}$ term will also be odd and induct on $n \in \mathbb{Z}^+$.
+		
+		First, let us show the base case $n = 0$. Now, because $f$ is odd, then $\frac{f^{(0)}(0)}{0!}z^0 = f(0)$ is odd.
+	\end{proof}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 3}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122A \\
+		July 15, 2017
+	\end{center}
+
+\section{Monday}
+\begin{enumerate}
+	\item[Extra 5.] Write down in terms of $M$-neighborhoods of $\infty$ what it means that $\lim_{z \rightarrow \infty} f(z) = \infty$.
+	
+	\paragraph{Answer} When we project the complex numbers on a sphere, we can see that as the magnitude of the number increases more and more they seem to converge to the north pole of the sphere. 
+	
+	\item[Extra 6.] Prove that $\lim_{z \rightarrow 0}{\frac{1}{z}} = \infty$ and that $\lim_{z \rightarrow 0} \frac{1}{z} = \infty$ and that $\lim_{z \rightarrow \infty} \frac{1}{z} = 0$. 
+	
+	\begin{enumerate}
+		\item Prove that $\lim_{z \rightarrow 0}{\frac{1}{z}} = \infty$
+		
+		\begin{proof}
+			Let $M > 0$, $z \in \mathbb{C}$ be arbitrary. Then pick $\delta = \frac{1}{M}$. 
+			
+			As a result, whenever $|z - 0| = |z| < \delta$, we get that
+			\[|z| < \frac{1}{M}\]
+			
+			Now, multiply both sides by $M$, and we get
+			\[|z|M < 1\]
+			
+			Divide both sides by $|z|$, and we get
+			\[M < \frac{1}{|z|} = f(z)\]
+			
+			as we set out to prove.		
+		\end{proof}
+		
+		\item Prove that $\lim_{z \rightarrow \infty} \frac{1}{z} = 0$
+		
+		\begin{proof}
+			 We want to show that for any $\epsilon > 0$, there is a $\delta > 0$ so that if $|z| > \delta$ then $|f(z) - 0| < \epsilon$. Let $\delta = \frac{1}{\epsilon} >0$.
+			 
+			 \bigskip
+			 
+			 If $|z| > \delta$, then $|z| > \frac{1}{\epsilon}$. If we take the reciprocal of both sides, we get
+			 \[f(z) = \frac{1}{|z|} < \epsilon \]
+			 
+			 as we set out to prove.			 
+		\end{proof}
+	\end{enumerate}
+	
+	\item[Extra 7.] A complex values function $f: D \rightarrow \mathbb{C}$ is called bounded if there exists $M > 0$ such that $|f(z)| < M$ for all $z \in D$. Prove that $\{z_n\} \subseteq D$ such that $f(z_n) \rightarrow \infty$.
+\end{enumerate}
+
+\section{Tuesday}
+\begin{enumerate}
+	\item[2.3] By comparing coefficients or by use of the Cauchy-Riemann equations, determine which of the following polynomials are analytic.
+	
+	\begin{enumerate}
+		\item $P(x + iy) = x^3 - 3xy^2 - x + i(3x^2y - y^3 - y)$
+		
+		\paragraph{Analytic}
+		
+		Here, 
+		\[u(x, y) = x^3 - 3xy^2 - x\] and
+		\[v(x, y) = 3x^2y - y^3 - y\]. Therefore,
+		
+		\[\begin{aligned}
+		u_x &= 3x^2 - 3y^2 - 1 \\
+		v_y &= 3x^2 - 3y^2 - 1 \\		
+		u_y &= -6xy \\
+		-v_x &= -6xy
+		\end{aligned}		
+		\]
+		
+		Because $u_x = v_y$ and $u_y = -v-x$, $P(x + iy)$ is analytic.
+		
+		\item $P(x + iy) = x^2 + iy^2$
+		
+		\paragraph{Not Analytic}
+		
+		Here, $u(x, y) = x^2$ and $v(x, y) = y^2$. Therefore, 
+		
+		\[\begin{aligned}
+		u_x &= 2x \\
+		v_y &= 2y \\ 
+		\end{aligned}\]
+		
+		implying that $u_x \neq v_y$ or that $P(x + iy)$ is not analytic.
+						
+		\item $P(x + iy) = 2xy + i(y^2 - x^2)$
+		
+		\paragraph{Analytic}
+		
+		Here, $u(x, y) = 2xy$ and $v(x, y) = y^2 - x^2$. Therefore,
+		
+		\[\begin{aligned}
+		u_x &= 2y \\
+		v_y &= 2y \\
+		u_y &= 2x \\
+		-v_x = -(-2x) = 2x \\
+		\end{aligned}\]
+		
+		Because $u_x = v_y$ and $u_y = -v_x$, $P(x + iy)$ is analytic.
+	\end{enumerate}
+	
+	\item[2.4] Show that no nonconstant analytic polynomial can take imaginary values only.
+	
+	\begin{proof}
+		Let us prove the contrapositive, that if $f$ takes only imaginary values then $f$ is either constant or not analytic.
+		
+		\bigskip
+		
+		If $f$ only takes imaginary values then it has no real component, i.e. $u(x, y) = 0$. Thus, $u_x = 0$ and $u_y = 0$. If $f$ is analytic, then necessarily $v_x = v_y = 0$. Because, only a constant function has these derivatives $f$ is constant.
+		
+		\bigskip
+		
+		Now, if we relax the requirement that $f$ satisfy the Cauchy-Riemann equations, then it is free to be non-constant. However, it will not be analytic, as we set out to prove.
+	\end{proof}
+\end{enumerate}
+
+\section{Wednesday and Thursday}
+\begin{enumerate}
+	\item[3.2] Show $f(z) = x^2 + iy^2$ is differentiable at all points on the line $x = y$. 
+	\begin{proof}
+		Let $z \in \mathbb{C}$ be arbitrary as long as $x = y$. Then, we want to show that $f$ is differentiable, or in other words $\lim_{h \rightarrow 0} \frac{f(z+h) - f(z)}{h}$ exists.
+		
+		Let us write $z = x_1 + iy_1$ and $h \in \mathbb{C}$ as $h = x_2 + iy_2$. Then, our limit becomes
+		\[\begin{aligned}
+		& \lim_{x_2 + iy_2 \rightarrow 0} \frac{
+			f(x_1 + iy_1 + x_2 + iy_2) -
+			f(x_1 + iy_1)}{
+			x_2 + iy_2} \\
+		& \lim_{x_2 + iy_2 \rightarrow 0} \frac{
+			f[x_1 + x_2 + i(y_1 + y_2)] -
+			f(x_1 + iy_1)}{
+			x_2 + iy_2} \\
+		& \lim_{x_2 + ix_2 \rightarrow 0} \frac{
+			f[x_1 + x_2 + i(x_1 + x_2)] -
+			f(x_1 + ix_1)}{
+			x_2 + ix_2} \\
+		& \lim_{x_2 + ix_2 \rightarrow 0} \frac{
+			(x_1 + x_2)^2 + i(x_1 + x_2)^2 -
+			(x_1^2 + ix_1^2)}{
+			x_2 + ix_2} \\
+		& \lim_{x_2 + ix_2 \rightarrow 0} \frac{
+			x_1^2 + 2x_1x_2 + x_2^2 + ix_1^2 + 2ix_1x_2 + ix_2^2 -
+			(x_1^2 + ix_1^2)}{
+			x_2 + ix_2} \\
+		& \lim_{x_2 + ix_2 \rightarrow 0} \frac{
+			2x_1x_2 + x_2^2 + 2ix_1x_2 + ix_2^2}{
+			x_2 + ix_2} \\
+		& \lim_{x_2 + ix_2 \rightarrow 0} \frac{
+			2x_1x_2(1 + i) + x_2^2(1 + i)}{
+			x_2(1 + i)} \\
+		& \lim_{x_2 + ix_2 \rightarrow 0} \frac{
+			2x_1x_2 + x_2^2}{
+			x_2} \\
+		& \lim_{x_2 + ix_2 \rightarrow 0} 2x_1 + x_2 = 2x_1 + x_2 \\
+		\end{aligned}\]
+		Therefore, our limit exists so $f$ is differentiable.
+		
+		\paragraph{Nowhere Analytic} Show that $f$ is nowhere analytic.
+		
+		Using the Cauchy-Riemann Equations, we see that 
+		\[u_x = 2y, v_y = 2y, u_y =0, -v_x = 0\]
+		
+		Therefore, $f$ is analytic only on the line $x = y$. However, for $f$ to be analytic for any $z$, it must be analytic in a neighborhood of $z$. However, for any $z$ where $f$ is analytic, its neighborhood contains an infinite number of points where $x \neq y$. Therefore, $f$ is nowhere analytic.
+	\end{proof}
+	
+	\item[3.5] Suppose $f$ is analytic in a region and $f' \equiv 0$ there. Show that $f$ is constant. 
+	
+	\begin{proof}
+		Let $f$ be any function analytic in a region where $f' \ equiv 0$ in that region. Because it is analytic, it satisfies the Cauchy-Riemann Equations, implying $u_x = v_y$ and $u_y = -v_x$. Because $f' \equiv 0$, it must mean that its partial derivatives either cancel each other out or are equal to 0. However, because $f$ is analytic, the conditions imposed by the Cauchy-Riemann Equations imply $u_x = v_y = 0$ and $u_y = -v_x =0$. Only a constant function has these derivatives, so $f$ is constant.
+	\end{proof}
+	
+	\item[3.9] Show that there are no analytic functions $f = u + iv$ with $u(x, y) = x^2 + y^2$. 
+	
+	\begin{proof}
+		Let $f$ be an arbitrary function with $u(x, y) = x^2 + y^2$, and assume for a contradiction that it is analytic.
+		
+		\bigskip
+		
+		Because $f$ is analytic, it satisfies the Cauchy-Riemann Equations. Because $u_x = 2x$ and $u_y = 2y$, this implies $v_y = 2x$ and $-v_x = 2y$. Now, notice that $v_y = 2x$ implies 
+		\[\int v_y dy = \int 2x dy\]
+		\[v = 2xy + c(y) \]
+		On the other hand, $v_x = -2y$ implies
+		\[\int v_x dx = \int -2y dx \]
+		\[v = -2xy + c(x)\]
+		
+		However, $v = 2xy + c(y)$ and $v = -2xy + c(x)$ cannot be true at the same time. Therefore, there are no analytic functions $f = u + iv$ with $u(x, y) = x^2 + y^2$.		
+	\end{proof}
+	
+	\item[3.10] Suppose $f$ is an entire function of the form
+		\[f(x, y) = u(x) + iv(y)\]
+		
+	Show that $f$ is a linear polynomial.
+	
+	\begin{proof}
+		Let $f$ be any entire function of the form $u(x) + iv(y)$. If $f$ is entire, it is analytic anywhere, so it constantly satisfies the Cauchy Riemann equations. Because $u_y = -v_x = 0$ for all $x, y$ this imposes the constraint that $u_x = v_y$ for all $x, y$.
+		
+		\bigskip
+		
+		Suppose for a contradiction that $u(x), v(y)$ are not linear polynomials, i.e. they are polynomials with degree $> 1$. However, if we take partial derivatives $u_x$ and $v_y$, then they will necessarily have some term involving $x$ and $y$ respectively. Now, take for example--$x = 0, y = 1$, then their partial derivatives evaluate to $u_x= 0, v_y= 1$. This contradicts the assumption $f$ is entire, so this cannot be the case.
+		
+		\bigskip
+		
+		Now, we are left with the possibility that $u(x), v(y)$ are both linear polynomials. Write $u(x) = a + bx$ and $v(y) = c + dy$. Taking partial derivatives, we get $u_x = b$ and $v_y = d$. Thus, the Cauchy-Riemann Equations are satisfied if $x$ and $y$ have the same coefficients.
+		
+		\bigskip
+		
+		In conclusion, we have shown that any entire function of the form $u(x) + iv(y)$ has $u(x)$ and $v(y)$ as linear polynomials sharing the same coefficient on the first degree term.
+	\end{proof}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 4}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122A \\
+		July 23, 2017
+	\end{center}
+
+\section{Monday and Tuesday}
+\begin{enumerate}
+	\item[3.11]
+	\begin{enumerate}
+		\item Show that $e^z$ is entire by verifying the Cauchy-Riemann equations for its real and imaginary parts.
+		
+		\begin{proof}
+			First, $e^z = e^x \cos(y) + ie^x \sin(y)$.
+			
+			Thus,
+			\[u_x = e^x \cos(y) = v_y \]
+			and
+			\[u_y = -e^x \sin(y) = -v_x \]
+			
+			Because $e^z$ satisfies the Cauchy-Riemann equations for all $x, y$, it is analytic everywhere. Since $e^z = e^x \cos(y) + ie^x \sin(y)$ is the sum of the product of continuous functions, it is also continuous. Therefore, $e^z$ is also differentiable everywhere (entire).
+		\end{proof}
+		
+		\item Prove
+			\[e^{z_1 + z_2} = e^{z_1}e^{z_2} \]
+	\end{enumerate}
+	
+	\item[3.13] Discuss the behavior of $e^z$ as $z \rightarrow \infty$ along the various rays from the origin
+	
+	\paragraph{Solution} I will discuss eight rays. One for each direction of the x and y-axis, and one for each quadrant of the complex plane.
+	
+	\begin{enumerate}
+		\item First, fix $x = 0$ and let $y \rightarrow \infty$. Then we simply get
+		\[e^0cos(y) + ie^0\sin(y) \]
+		
+		This function simply moves around the unit circle. The same could be said for $y \rightarrow -\infty$.
+		
+		\item Now, fix $y = 0$ and let $x \rightarrow \infty$. Then we get
+		\[e^xcos(0) + ie^x\sin(0) = e^x \]
+		
+		This function simply diverges to infinity. On the other hand, if $x \rightarrow -\infty$, then $e^z \rightarrow 0$.
+		
+		\item Now, consider a ray shooting upwards through the first quadrant. Let $x$ and $y$ both go to infinity. Because of the behavior of $e^x$, $e^z$ will grow in magnitude. However, because of the periodic nature and range of $cos(y)$ and $sin(y)$, this makes $e^z$ spiral around the center. Thus, in this case $e^z$ spirals out from the center. We can say the same about the case when $x \rightarrow \infty$ and $y \rightarrow -\infty$ (ray through the fourth quadrant).
+		
+		\item Lastly, let $x \rightarrow -\infty$ and $y \rightarrow \infty$ (ray through second quadrant). Because of the behavior of $e^x$, $e^z \rightarrow 0$. We can say the same in the case of $y \rightarrow -\infty$ (ray through the third quadrant).
+	\end{enumerate}
+\end{enumerate}
+
+\section{Wednesday}
+\begin{enumerate}
+	\item[4.2] Evaluate $\int_C f(z) dz$ where $f(z) = x^2 + iy^2$ and $z(t) = 2t + i2t$.
+	\paragraph{Solution} First,
+	$\dot{z}(t) = 2t + i2t$ so
+	\[\begin{aligned}
+	\int^b_a f(x(t), y(t)) \cdot \dot{z}(t) dt
+	&= \int^1_0 f(t^2, t^2) \cdot (2t + i2t) dt \\
+	&= \int^1_0 (t^4 + it^4)(2t + i2t) dt \\
+	&= \int^1_0 2t^5 + i4t^5 + i^2t^5 dt \\
+	&= 4i\int^1_0 t^5 dt \\
+	&= 4i \cdot \frac{t^6}{6}|^1_0 \\
+	&= 4i
+	\end{aligned}\]
+	
+	\item[4.8] Show that $\int_C z^k dz = 0$ for any integer $k \neq -1$ and $C: z = Re^{i\theta}, 0 \leq \theta \leq 2\pi$.
+		\begin{enumerate}
+			\item By showing that $z^k$ is the derivative of a function analytic throughout $C$.
+			
+			\begin{proof}
+				First, because $z^k$ is a polynomial in $z$, it is by definition an analytic polynomial. Because it is analytic and continuous (because polynomials are continuous everywhere), it is therefore entire. We know by the Integral Theorem that $z^k$ is therefore the derivative of an everywhere analytic function, which I will now proceed to specifically identify. Notice that 
+				\[\frac{d}{dz} \frac{z^{k+1}}{k+1} = k + 1 \frac{z^{k}}{k+1} = z^k \]
+				In other words, we $z^k$ is the derivative of this function as long as $k \neq 1$.
+				
+				\bigskip
+				Now, recall $C: z = Re^{i\theta} = (R\cos(\theta), iR\sin(\theta))$ is continuous and differentiable everywhere. Furthermore, $z'(t) = (-R\sin(\theta), iR\cos(\theta)$ is never 0 because $\sin$ and $\cos$ are never equal to zero at the same time. Therefore,  $C$ is a smooth curve, and because it is defined for $0 \leq \theta \leq 2\pi$, it is also closed.
+				
+				\bigskip
+				
+				In conclusion, because $z^k$ is an entire function (and the derivative of an analytic function for $z \neq 1$) and $C$ is a smooth, closed curve, then by the Closed Curve Theorem, $\int_C z^k dz = 0$ for $z \neq 1$.
+			\end{proof}
+			
+			\item Directly, using the parameterization of $C$.
+			\begin{proof}
+				First, $z(\theta) = Re^{i\theta} = (R\cos(\theta), iR\sin(\theta)$, so, \[\dot{z}(\theta) = -R\sin(\theta) + iR\cos(\theta)\]
+				Therefore,
+				\[\int^b_a f(z(\theta)) \cdot \dot{z}(\theta) d\theta =
+				  \int^{2\pi}_{0} (R\cos(\theta) + iR\sin(\theta))^k \cdot 
+				  (-R\sin(\theta) + iR\cos(\theta))
+				  d\theta\]
+				  
+				Now, let $u = R\cos(\theta) + iR\sin(\theta)$, implying that
+				\[du = (-R\sin(\theta) + iR\cos(\theta))\cdot d\theta\]
+				
+				Thus, our integral becomes
+				\[\begin{aligned}
+				\int^{2\pi}_{0} u^k du
+				&= \frac{u^{k+1}}{k+1}|^{2\pi}_{0} \\
+				&= \frac{(R\cos(\theta) + iR\sin(\theta))^{k+1}}{k+1} |^{2\pi}_{0} \\
+				&= 0 & \text{Because $\cos$ and $\sin$ are periodic with period 2$\pi$}\\
+				\end{aligned}\]
+			\end{proof}
+		\end{enumerate}
+\end{enumerate}
+\end{document}

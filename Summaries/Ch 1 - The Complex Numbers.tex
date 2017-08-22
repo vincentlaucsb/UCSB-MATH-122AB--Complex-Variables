@@ -1,0 +1,155 @@
+\documentclass[]{article}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{color}
+
+%opening
+\title{Ch 1: The Complex Numbers}
+\author{Vincent La}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+A complex number $z \in \mathbb{C}$ can be written as $z = x + iy$ where $x$ and $y$ are real numbers.
+\begin{itemize}
+	\item $x$ is called the \textbf{real part} of z
+	\item $y$ is called the \textbf{imaginary part} of z
+\end{itemize}
+
+Reflecting this, sometimes this notation is used:
+\begin{itemize}
+	\item $Re(z) = x$
+	\item $Im(z) = y$
+	\item $z = Re(z) + i \cdot Im(z)$	
+\end{itemize}
+
+\section{Complex Arithmetic}
+Let $z_1$ and $z_2$ be any complex numbers which we will denote as 
+$z_1 := x_1 + iy_1$ and $z_2 := x_2 + iy_2$, where $x_i, y_i$ are real numbers.
+
+\begin{itemize}
+	\item \textbf{Addition} $z_1 + z_2 = (x_1 + x_2) + i(y_1 + y_2)$
+	\item \textbf{Multiplication} 
+	\[\begin{aligned}
+	z_1 \cdot z_2
+	&= (x_1 + iy_1)\cdot(x_2+iy_2) \\
+	&= x_1x_2 + ix_1y_2 + ix_2y_1 + i^2y_1y_2 & \text{Apply distributive law} \\
+	&= x_1x_2 + ix_1y_2 + ix_2y_1 + (-1)\cdot y_1y_2 \\
+	&= (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1) \\
+	\end{aligned}\]
+\end{itemize}
+
+\subsection{Square Roots of Complex Numbers}
+Every complex number $z = a + ib$ has two square roots $s_1$ and $s_2$. If we denote $s = x + iy$ then
+\[\begin{aligned}
+x &= \pm \sqrt{\frac{a}{2} + \frac{\sqrt{a^2 + b^2}}{2}} \\
+y &= \frac{b}{2x}
+\end{aligned}\]
+
+\begin{proof}
+	Let $z$ be any complex number and write it as $a + ib$. Furthermore, denote its square root as $s = x + iy$. To find the square root, we simply have to solve $s^2 = z$ or equivalently $(x + iy)^2 = a + ib$.
+	
+	\bigskip
+	
+	Continuing, we have
+	\[\begin{aligned}
+	(x + iy)^2 &= a + ib \\
+	x^2 + 2ixy - y^2 &= a + ib & \text{Apply distributive rule to LHS}\\
+	(x^2 - y^2) + i(2xy) &= a + ib \\
+	\end{aligned}\]
+	
+	By matching like terms (real part with real part, imaginary part with imaginary part), we get
+	\[\begin{aligned}
+	a &= x^2 - y^2 \\
+	b &= 2xy \\
+	\end{aligned}\]
+	
+	Then, we want to find equations for our unknowns $x, y$ in terms of our known variables $a, b$. First, $b = 2xy$ implies $y = \frac{b}{2x}$. Then, plugging this into the equation for $a$ we get
+	\[\begin{aligned}
+	a
+	&= x^2 - y^2 \\
+	&= x^2 - (\frac{b}{2x})^2 \\
+	&= x^2 - \frac{b^2}{4x^2} \\
+	4ax^2 &= 4x^4 - b^2 & \text{Multiply both sides by $4x^2$} \\
+	4ax^2 - 4x^4 + b^2 &= 0 \\
+	\end{aligned}\]
+	
+	Applying the usual quadratic formula 
+	\[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+	to the previous equation with $x = x^2, a = 4, b=-4a, c=-b^2$,
+	we get
+	\[\begin{aligned}
+	x^2
+	&= \frac{4a \pm \sqrt{4^2a^2 - 4\cdot4\cdot(-b^2)}}{2\cdot4} \\
+	&= \frac{a}{2} + \frac{\sqrt{4^2}\sqrt{a^2 + b^2}}{8} \\
+	&= \frac{a}{2} + \frac{\sqrt{a^2 + b^2}}{2} \\
+	x &= \pm \sqrt{\frac{a}{2} +
+		\sqrt{\frac{a^2 + b^2}{2}}
+	} \\
+	\end{aligned}\]
+\end{proof}
+
+\section{More Basic Definitions}
+\begin{itemize}
+	\item \textbf{Conjugate} The conjugate of $z = x + iy$ is the complex number $\bar{z} = x - iy$.
+	\item \textbf{Multiplicative Inverse} The multiplicative inverse of $z$ is the complex number $z^-1 = \frac{\bar{z}}{|z|^2}$
+	
+	\bigskip One can remember this since:
+	\[\begin{aligned}
+	\frac{1}{z}
+		&= \frac{1}{x + iy} \\
+		&= \frac{1}{x + iy} \cdot \frac{(x - iy)}{(x - iy)} & \text{Multiply by complex conjugate} \\
+		&= \frac{x - iy}{x^2 - ixy + ixy - i^2y^2} \\
+		&= \frac{x - iy}{x^2 + y^2} \\
+		&= \frac{\bar{z}}{|z|^2}
+	\end{aligned}\]
+\end{itemize}
+
+\section{Sequences}
+\paragraph{Definition: Sequence} A sequence is an indexed list of complex numbers. As such, we can think of a sequence as a function $\mathbb{N} \rightarrow \mathbb{C}$, where we usually write $z_k$ for $f(k)$.
+
+Some notations include:
+\begin{itemize}
+	\item $\{z_k\}^\infty_{k=1}$
+	\item $\{z_k\}$
+	\item $z_1, z_2, z_3, ...$
+	\item $z_k = f(k)$
+\end{itemize}
+
+\paragraph{Motivation} Sequences will allow us to understand limits and therefore derivatives
+
+\subsection{Convergence of a Sequence}
+\paragraph{Definition} We say a sequence ${z_k}$ \textbf{converges} to $z \in \mathbb{C}$ if the sequence of real numbers $|z_k - z|$ converges to 0. In other words,
+\[\lim_{k \rightarrow \infty} |z_k - z| = 0\]
+
+(We can think of $|z_k - z|$ as the distance between the values of the sequence and some number $z$).
+
+Usually \textit{$|z_k - z|$ converges to 0} is written as $z_k \rightarrow z$.
+
+\paragraph{Definition: Epsilon-N Definition of Limit}
+A sequence $\{z_k\}$ converges to $z \in \mathbb{C}$ if for every $\epsilon > 0$, there exists an $N \in \mathbb{N}$ such that for every $n > N$, $|z_n - z| < \epsilon$ for $n \geq N$.
+
+\bigskip
+
+In other words, for every positive $\epsilon$--especially very small epsilons--we can find an $N$ such that for every term past the $N$-th term, the distance between the values of the sequence and $z$ are smaller than $\epsilon$. Geometrically, this means if we surround $z$ with a ball of radius $\epsilon$, we can find some $N$ where all for all $n > N$, $z_n$ is within that ball.
+
+(Continue later...)
+
+\section{Topology of Complex Numbers}
+\paragraph{Definition: Open Disc} ...
+\paragraph{Definition: Open Set} $S \subset \mathbb{C}$ is called \textbf{open} if for every $z \in S$ there exists an $\epsilon > 0$ such that $D(z; \epsilon) \leq S$. In other words, for every point in an open set $S$, we can surround it with some ball of radius $\epsilon$ and have that ball be a subset of $S$.
+
+\paragraph{Definition: Boundary} A number $z \in \mathbb{C}$ is the the \textbf{boundary} of $S \subset \mathbb{C}$ if every disk  $D(z, r)$ contains elements of both $S$ and $\mathbb{C}\backslash S$.
+
+\bigskip
+
+In other words, we say $z$ is part of the boundary of a set $S$ if every time we try to draw a disc around it, we always get elements inside $S$ and elements outside of $S$.
+
+\paragraph{Definition: Closure} The \textbf{closure} of $S \subset \mathbb{C}$ is the set $S = S \cup \delta S$.
+
+\bigskip
+
+The closure of a set is the set itself union its boundary.
+\end{document}

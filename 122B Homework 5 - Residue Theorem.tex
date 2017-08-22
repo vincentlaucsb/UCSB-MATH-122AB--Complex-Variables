@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 5}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		August 20, 2017
+	\end{center}
+	
+\section{Theorems}
+\paragraph{Theorem 1} If f is analytic everywhere in the finite plane
+except for a finite number of points interior to a positively oriented
+simple closed contour $C$, then
+\[\int_C f dz = 2\pi i Res_{z=0} [\frac{1}{z^2} \cdot f(\frac{1}{z})] \]
+	
+\section{Homework}
+\begin{enumerate}
+	\item Use Cauchy's Residue Theorem to evaluate the integral around the circle
+	$|z| = 3$ with an orientation of
+	\begin{enumerate}
+		\item $f(z) = z^2\exp{\frac{1}{z}}$
+		\paragraph{Solution}
+		This function is analytic everywhere except $z = 0$, where there is a singularity. It is isolated because it is analytic in an neighborhood around it, and it is the only singular point of the function.
+		
+		\bigskip
+		
+		Now, let us find the Laurent Series for this function. Recall the MacLaurin series
+		\[\begin{aligned}
+		\exp{z} &= \sum^{\infty}_{n=0} \frac{z^n}{n!} & (|z| < \infty) \\
+		\exp{\frac{1}{z}}
+		&= \sum^{\infty}_{n=0} \frac{(\frac{1}{z}^n)}{n!} \\
+		&= \sum^{\infty}_{n=0} \frac{1}{z}\frac{1}{n!} & (0 < |z| < \infty) \\
+		\end{aligned}\]
+		
+		Therefore,
+		\[\begin{aligned}
+		z^2\exp{\frac{1}{z}}
+		&= z^2 \cdot [
+			\frac{1}{1!} \cdot \frac{1}{z^0} + 
+			\frac{1}{1!} \cdot \frac{1}{z} + 
+			\frac{1}{2!} \cdot \frac{1}{z^2} + 
+			\frac{1}{3!} \cdot \frac{1}{z^3} +
+			\frac{1}{4!} \cdot \frac{1}{z^4} + ...] \\
+		&= z^2 \cdot [1 + z + \frac{1}{2!z^2} +
+			\frac{1}{3!z^3} + \frac{1}{4!z^4} + ...] \\
+		&= z^3 + z^2 + \frac{1}{2!} + \frac{1}{3!z} +
+			\frac{1}{4!z^2} + ...
+		\end{aligned}\]
+		
+		So, our residue $b_1 = \frac{1}{3!} = \frac{1}{6}$. Because
+		$\int_C f(z) dz = 2\pi i b_1$, this implies
+		\[\int_C f(z) dz = \frac{1}{3} \pi i \]
+		
+		\item $f(z) = \frac{z+1}{z^2 - 2z}$
+		
+		\paragraph{Solution}
+		This function has two singularities, $z = 0$ and $z = 2$.
+		
+		\paragraph{$\mathbf{z = 0}$}
+		First, recall that the Laurent Series coefficients are given by 
+		\[\begin{aligned}
+		b_n &= \frac{1}{2\pi i} \int_C \frac{f(z)}{(z - z_0)^{-n + 1}} dz \\
+		b_1 &= \frac{1}{2\pi i} \int_C f(z) dz \\
+		\end{aligned}\]
+		
+		Thus, our residue at $z = 0$ is
+		\[\begin{aligned}
+		\frac{1}{2\pi i} \cdot \int_C \frac{z + 1}{z^2 - 2z} dz &=
+		\frac{1}{2\pi i} \cdot [\int_C \frac{z}{z^2 - 2z} dz +
+			\int_C \frac{1}{z^2 - 2z} dz] \\
+		&= \frac{1}{2\pi i} \cdot [\int_C \frac{1}{z - 2} dz +
+		\int_C \frac{1}{z^2 - 2z} dz] \\
+		&= \frac{1}{2\pi i} \cdot [\int_C \frac{1}{z - 2} dz +
+		\int_C \frac{-1}{2} \cdot \frac{1}{z} dz +
+		\int_C \frac{1}{2} \cdot \frac{1}{z - 2} dz ] & \text{Partial fractions} \\
+		&= \frac{1}{2\pi i} \cdot
+		[\frac{3}{2} \int_C \frac{1}{z - 2} dz +
+         \frac{-1}{2} \int_C \frac{1}{z} dz ]
+		\end{aligned}\]
+		
+		For the first integral, according to Cauchy's Integral Formula, $f(z) = 1$ and $z_0 = 0$. Because $f(z) = 1$ is obviously analytic, and $0$ is interior to the circle $|z| < 3$, then 
+		\[\int_C \frac{1}{z - 2} dz = 2\pi i f(2) = 2\pi i\]
+		
+		For the second integral above, we can also apply Cauchy's Integral Formula and get
+		\[\int_C \frac{1}{z - 0} dz = 2\pi i f(0) = 2\pi i \]	
+		
+		In conclusion,
+		\[\begin{aligned}
+		\frac{1}{2\pi i} \cdot \int_C \frac{z + 1}{z^2 - 2z} dz
+		&= \frac{1}{2\pi i} \cdot [\frac{3}{2} \cdot 2\pi i + \frac{-1}{2} \cdot 2\pi i] \\
+		&= 1 = Res_{z = 0}
+		\end{aligned}\]
+
+		\paragraph{$\mathbf{z = 2}$}
+		Notice that the same formulas above also apply for $z = 2$. Therefore, 
+		\[Res_{z = 2} = 1\]
+		
+		\paragraph{Conclusion}
+		In conclusion, $\int_C \frac{z+1}{z^2 - 2z} = 2\pi i(Res_1 + Res_2) = 2\pi i \cdot 2 = 4\pi i$.
+	\end{enumerate}
+	
+	\item Use the theorem involving one residue to evaluate the following integrals over the circle $|z| = 2$ with positive orientation.
+	
+	\begin{enumerate}
+		\item $f(z) = \frac{1}{1 + z^2}$
+		\paragraph{Solution} Because $\frac{1}{1 + z^2}$ is analytic everywhere exccept for $z = \pm i$, we can use Theorem 1 to evaluate this integral.
+		
+		First, let us find the residue at $z = 0$. Recall the MacLaurin series,
+		\[\begin{aligned}
+			\frac{1}{1 + z}
+			&= \sum^{\infty}_{n=0} (-1)^n \cdot z^n & (|z| < 1) \\
+			\frac{1}{1 + z^2}
+			&= \sum^{\infty}_{n=0} (-1)^n \cdot z^{2n} & \text{Plug $z = z^2$ into above } (|z| < 1) \\
+		\end{aligned}\]
+		
+		If we expand the series above, we get no $\frac{b_1}{z - z_0}$ terms, so the residue is 0. Therefore, $\int_C f(z) = 0$.
+		
+		\item $f(z) = \frac{1}{z}$
+		
+		\paragraph{Solution} Because $\frac{1}{z}$ is analytic everywhere except for $z = 0$, we can use Theorem 1 to evaluate this integral.
+		
+		\[\begin{aligned}
+		\int_C f(z) d(z) &=
+		2\pi i \cdot Res_{z=0} [\frac{1}{z^2} \cdot f(\frac{1}{z})] \\
+		&= 2\pi i \cdot Res_{z=0} [\frac{1}{z^2} \cdot z] \\
+		&= 2\pi i \cdot Res_{z=0} [\frac{1}{z}]
+		\end{aligned}\]
+
+		Unforunately, because $\frac{1}{z}$ is not analytic at $z = 0$ we cannot use the MacLaurin series expansion. Again, use the formula 
+		$b_1 = \frac{1}{2\pi i} \int_C \frac{1}{z} dz$. Then, consider the parameterization of $|z| < 2$ given by $|z| = 2e^{i\theta}$ for $0 < \theta < 2\pi$.
+		
+		\[\begin{aligned}
+		b_1 = \frac{1}{2\pi i} \oint z^{-1} dz
+		&= \frac{1}{2\pi i} \int_0^{2\pi} (2e^{i\theta})^{-1} \cdot (-2\sin{\theta} + 2i\cos{\theta}) d\theta \\
+		&= \frac{1}{2\pi i} \int_0^{2\pi} 
+			\frac{-2\sin{\theta} + 2i\cos{\theta}}{2e^{i\theta}} d\theta \\
+		&= \frac{1}{2\pi i} \int_0^{2\pi} 
+		\frac{-\sin{\theta} + i\cos{\theta}}{e^{i\theta}} d\theta \\
+		&= \frac{1}{2\pi i} \int_0^{2\pi} 
+		\frac{ie^{i\theta}}{e^{i\theta}} d\theta \\
+		&= \frac{1}{2\pi i} \int_0^{2\pi} i d\theta \\
+		&= \frac{1}{2\pi i} \cdot [2\pi i] \\
+		&= 1
+		\end{aligned}\]
+		
+		In conclusion, $\int_C f(z) d(z) = 2\pi i$.
+		
+	\end{enumerate}
+\end{enumerate}
+\end{document}

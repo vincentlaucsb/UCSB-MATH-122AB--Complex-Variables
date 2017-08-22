@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 2}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122A \\
+		July 10, 2017
+	\end{center}
+
+\section*{Monday}
+\begin{enumerate}
+	\item[1.22.] Prove that a polygonally connected set is connected.
+	
+	\begin{proof}
+		\item Let $S$ be any polygonally connected set and suppose for a contradiction that it is disconnected. Because S is disconnected, there are two open disjoint sets $A$ and $B$ such that $A \cup B$ contains $S$ but neither set alone contains $S$.
+		
+		\bigskip
+		
+		On the other hand, because $S$ is polygonally connected, for any points $s_1, s_2$ in $S$ there is a finite union of polygonal lines connecting them. Let $s_1 \in S \cap A$, $s_2 \in S \cap B$ be arbitrary. Because $A$ and $B$ are disjoint, there is no line segment connecting any two points in $A$ and $B$, i.e. there is no polygonal line between $s_1, s_2$. But this contradicts our assumption that $S$ is polygonally connected. Thus, if $S$ is polygonally connected, it must be that it is connected.
+	\end{proof}
+
+	\item[Extra 3.] Give an example of a set that is connected but not polygonally connected.
+	
+	\paragraph{Answer} Consider the set $S = \{z | Re(z) = x, Im(z) = e^x \}$. Clearly the set is connected since $e^x$ is continuous everywhere. However, it is not polygonally connected because there are no straight line segments connecting any two points.
+\end{enumerate}
+
+\section*{Wednesday}
+\begin{enumerate}
+	\item[1.21.] Show that
+	
+	\begin{enumerate}
+		\item $f(z) = \sum^{\infty}_{k=0} kz^k$ is continuous in $|z| < 1$
+		
+		\begin{proof}
+			Using the M-Test, we can show that $g(z)$ converges to a continuous function in the right half-plane Re $z > 0$. Let $M_k = $ some sequence which I haven't found yet.
+			
+			\paragraph{Continuity} First, we need to show that $f_k$ is continuous for $|z| < 1$. Because $kz^k$ is a polynomial, and polynomials are continuous, $f_k$ is continuous.
+			
+			(Proof to be continued...)
+			
+		\end{proof}
+		
+		\item $g(z) = \sum^{\infty}_{k=1} \frac{1}{k^2 + z}$ is continuous in the right half-plane Re $z > 0$
+		
+		\begin{proof}
+			Using the M-Test, we can show that $g(z)$ converges to a continuous function in the right half-plane Re $z > 0$. Let $M_k = \cdot \frac{1}{k^2}$
+			
+			\paragraph{Continuity} First, we need to show that $f_k$ is continuous for Re $z > 0$. In other words, let $\epsilon > 0$ and $\delta = \epsilon(k^2 + z)(k^2 + z_0) > 0$. Then, whenever $|z - z_0| < \delta$, we have
+			
+			\[\begin{aligned}
+			| f(z) - f(z_0) |
+			&= |\frac{1}{k^2 + z} - \frac{1}{k^2 + z_0}| \\
+			&= |\frac{1}{k^2 + z} \cdot (\frac{k^2 + z_0}{k^2 + z_0}) - \frac{1}{k^2 + z_0} \cdot (\frac{k^2 + z}{k^2 + z})| \\
+			&= |\frac{k^2 + z_0 - k^2 + z}{(k^2 + z)(k^2 + z_0)}|
+			\end{aligned}\]
+			
+			Furthermore, by our assumption that  $|z - z_0| = |-1(z - z_0)| = |z_0 - z| < \delta$, we have
+			\[\begin{aligned}
+			| f(z) - f(z_0) |
+			&< |\frac{\delta}{(k^2 + z)(k^2 + z_0)}| & \text{Because by assumption}\\
+			&= |\frac{\epsilon(k^2 + z)(k^2 + z_0)}{(k^2 + z)(k^2 + z_0)}| = \epsilon
+			\end{aligned}\]
+			
+			as required.
+			
+			\paragraph{$\mathbf{|f_k(z)| \leq M_k}$ throughout Re $\mathbf{z > 0}$}
+			
+			Clearly,
+			\[f_k(z) = |\frac{1}{k^2 + z}| \leq |\frac{1}{k^2}| = M_k \]
+			
+			\paragraph{$\mathbf{\sum^{\infty}_{k=1} M_k}$ Converges} $M_k$ is a p-series with $p > 2$. Therefore, it converges.
+			
+		\bigskip
+			
+		Because $g(z)$ passes the M-Test, it converges to a continuous function on Re $z > 0$, as we set out to prove.
+			
+		\end{proof}
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

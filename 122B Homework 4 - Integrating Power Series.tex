@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 4}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		August 16, 2017
+	\end{center}
+	
+\begin{enumerate}
+	\item[1.] In the $w$ plane, integrate the Taylor series expansion
+	\[\frac{1}{w} = \sum^{\infty}_{n=0} (-1)^n(w-1)^n \]
+	where $|w - 1| < 1$, along a contour interior to the circle of convergence from $w = 1$ to $w = z$ to obtain the representation
+	\[Log(z) = \sum^{\infty}_{n=1} \frac{(-1)^{n+1}}{n}(z-1)^n \]
+	where $|z - 1| < 1$.
+	
+	\paragraph{Solution}
+	\[\begin{aligned}
+	\int^z_w \frac{1}{w}
+	&= \int^z_1 \sum^{\infty}_{n=0}(-1)^n(w-1)^n \\
+	&= \sum^{\infty}_{n=0} (-1)^n \int u^n du &\text{Let $u = w - 1$, $du = dw$} \\
+	&= \sum^{\infty}_{n=0} (-1)^n  \cdot \frac{u^{n+1}}{n+1}|^{w=z}_{w=1} \\
+	&= \sum^{\infty}_{n=0} (-1)^n \frac{(w-1)^{n+1}}{n+1}|^{w=z}_{w=1} \\
+	&= \sum^{\infty}_{n=0} (-1)^n [\frac{(z-1)^{n+1}}{n+1} - \frac{(1-1)^{n+1}}{...}] \\
+	&= \sum^{\infty}_{n=0} (-1)^n \frac{(z-1)^{n+1}}{n+1} \\
+	&= \sum^{\infty}_{n=1} \frac{(-1)^{n+1}(z-1)^n}{n}
+	\end{aligned}\]
+	
+	\item[2.] Use the result of the previous exercise to show that if
+	\[f(z) = \frac{Log(z)}{z-1}\]
+	when $z \neq 1$, and $f(1) = 1$, then $f$ is analytic throughout the domain $0 < |z| < \infty$, $-\pi < Argz < \pi$.
+	
+	\begin{proof}
+		First, notice that dividing the power series representation for $Log(z)$
+		\[Log(z) = \sum^{\infty}_{n=1} \frac{(-1)^{n+1}}{n}(z-1)^n \]
+ 		by $z-1$, i.e.
+ 		\[\sum^{\infty}_{n=1} \frac{(-1)^{n+1}}{n}(z-1)^{n-1} \]
+ 		converges to $f(z)$ for $z \neq 1$. Furthermore, 
+ 		when $z = 1$ we get
+	 	 \[	\frac{(-1)^2}{1}\cdot(1)^0 + ...\cdot0 + ...\cdot0 \]
+		In other words, the power series converges to $f(1)$ when $z = 1$.
+		
+		\bigskip
+		
+		Now, $Log(z)$ is only continuous in $[-\pi, \pi]$. But otherwise, $f(z)$ is represented by a convergent power series for all $|z| > 0$, and is therefore entire.
+	\end{proof}
+\end{enumerate}
+\end{document}

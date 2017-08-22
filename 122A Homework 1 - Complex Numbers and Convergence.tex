@@ -1,0 +1,213 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 1}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122A \\
+		July 3, 2017
+	\end{center}
+
+\section*{Monday}
+\begin{enumerate}
+	\item[4.]
+		\begin{enumerate}
+			\item Show $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
+			
+			\begin{proof}
+				First, denote $z_k = x_k - iy_k$.
+				
+				Then, 
+				\[\begin{aligned}
+				\overline{z_1} + \overline{z_2}
+				&= (x_1 - iy_1) + (x_2 - iy_2) \\
+				&= (x_1 + x_2) -i(y_1 + y_2)
+				\end{aligned}
+				\]
+				
+				Furthermore, because $z_1 + z_2 = (x_1 + x_2) + i(y_1 + y_2)$, this implies
+				$\overline{z_1 + z_2} = (x_1 + x_2) - i(y_1 + y_2)$.
+				
+				Therefore, $\overline{z_1} + \overline{z_2} = \overline{z_1 + z_2}$.
+			\end{proof}
+			
+			\item Show $\overline{z_1\cdot z_2} = \overline{z_1} \cdot \overline{z_2}$. 
+			
+			\begin{proof}
+				First, $\overline{z_1} \cdot \overline{z_2} = (x_1 - iy_1) \cdot (x_2 - iy_2)$. Simplifying, we get $x_1x_2 - ix_1y_2 - ix_2y_1 + i^2y_1y_2$ or equivalently $x_1x_2 - y_1y_2 - i(x_1y_2 + x_2y_1)$.
+				
+				\bigskip
+				
+				Continuing,
+				\[\begin{aligned}
+				z_1 \cdot z_2
+				&= (x_1 + iy_1) \cdot (x_2 + iy_2) \\
+				&= x_1\cdot x_2 + i\cdot x_1y_2 + i\cdot x_2y_1 + i^2 y_1y_2 \\
+				&= (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1)
+				\end{aligned}				
+				\]
+				
+				This implies that $\overline{z_1 \cdot z_2} = (x_1x_2 - y_1y_2) - i(x_1y_2 + x_2y_1)$. Therefore, $\overline{z_1\cdot z_2} = \overline{z_1} \cdot \overline{z_2}$
+			\end{proof}
+			\item Show that $\overline{P(z)} = P(\overline{z})$ where $P$ is any polynomial with real coefficients.
+			\begin{proof}
+				Let $P(z)$ be any polynomial with real coefficients and write it as $P(z) = a_0 + a_1z + a_2z^2 + ... + a_nz^n$.
+				
+				Then, we get
+				\[\begin{aligned}
+				\overline{P(z)}
+				&= \overline{a_0 + a_1z + a_2z^2 + ... + a_nz^n} \\
+				&= \overline{a_0} + \overline{a_1z} + \overline{a_2z^2} + 
+				\overline{...} + \overline{a_nz^n} & \text{By 4a} \\
+				&= \overline{a_0} + \overline{a_1}\overline{z} + \overline{a_2}\overline{z^2} + ... + \overline{a_n}\overline{z^n} & \text{By 4b} \\
+				&= a_0 + a_1\overline{z} + a_2\overline{z^2} + ... + a_n\overline{z^n} &\text{Since $a_i \in \mathbb{R}$, $a_i = \overline{a_i}$} \\
+				&= a_0 + a_1\overline{z} + a_2\overline{z}^2 + ... + a_n\overline{z}^n & \text{$\overline{z^n} = \overline{z}^n$ by 4b} \\
+				\end{aligned}\]
+				
+				Trivially,
+				\[P(\overline{z}) = a_0 + a_1\cdot\overline{z} + a_2\cdot\overline{z}^2 + ... + a_n\cdot\overline{z}^n\]
+				
+				Therefore, $\overline{P(z)} = P(\overline{z})$.
+			\end{proof}
+			
+			\item Show $\overline{\overline{z}} = z$.
+			\begin{proof}
+				If $\overline{z} = x - iy$, then
+				$\overline{\overline{z}}
+				= \overline{x - iy}
+				= x - -(iy)
+				= x + iy
+				= z$.
+			\end{proof}
+		\end{enumerate}
+	\item[5.] If $P$ is a polynomial with real coefficients, we want to show that $P(z) = 0$ if and only if $P(\overline{z}) = 0$. 
+	
+	\begin{proof}
+		For one direction, assume that $P(z) = 0$ and try to prove that $P(\overline{z}) = 0$. First, if $P(z) = 0$ then $\overline{P(z)} = \overline{0} = 0$. Moreover, from 4c we know that $\overline{P(z)} = P(\overline{z})$. So if $\overline{P(z)} = 0$, then $P(\overline{z}) = 0$ as well.
+		
+		\bigskip
+		
+		Now, for the other direction assume that $P(\overline{z}) = 0$. With 4c, this implies $\overline{P(z)} = 0$. Because zero is its own complex conjugate, this implies $P(z) = 0$ and this completes the proof.
+	\end{proof}
+	
+	\item[12.] Solve using polar coordinates.
+	
+	\begin{enumerate}
+		\item $z^6 = 1$
+		\paragraph{Solution} First, notice that $z^6 = 1$ is equivalent to \[\Pi^{n=6}_{i=1} |z|e^{i\theta} = |z|^6 e^{6_i\theta} = 1\]
+		
+		This implies that $z$ and $e^{6_i\theta}$ are both equal to 1. Because only $e^0 = 1$, this implies $6\theta = 0 \text{ modulo } 2\pi$. Thus, this implies six different solutions:
+		\begin{itemize}
+			\item $6\theta = 0 \implies \theta = 0$
+			\item $6\theta = 2\pi \implies \theta = \frac{1}{3}\pi$
+			\item $6\theta = 4\pi \implies \theta = \frac{2}{3}\pi$
+			\item $6\theta = 6\pi \implies \theta = \pi$
+			\item $6\theta = 8\pi \implies \theta = \frac{4}{3}\pi$
+			\item $6\theta = 10\pi \implies \theta = \frac{5}{3}\pi$			
+		\end{itemize}
+		
+		\item $z^4 = -1$.
+		\paragraph{Solution} Using polar coordinates, this is equivalent to 
+		\[|z|^4[\cos(4\theta) + i\sin(4\theta)] = -1\]
+		
+		Because $|z|^4$ can only ever be a positive quantity, this implies $z = 1$ while $\cos(4\theta) + i\sin(4\theta) = -1$. Furthermore, recall that 
+		\[\cos(\theta) + i\sin(\theta) = -1 + 0 = -1\]
+		when $\theta = \pi$.
+		
+		Therefore, $4 \cdot \pi = \theta \text{ modulo } 2 \pi$. This implies four solutions:
+		\begin{itemize}
+			\item $4\theta = \pi \implies \theta = \frac{\pi}{4}$
+			\item $4\theta = 3\pi \implies \theta = \frac{3\pi}{4}$
+			\item $4\theta = 5\pi \implies \theta = \frac{5\pi}{4}$
+			\item $4\theta = 7\pi \implies \theta = \frac{7\pi}{4}$
+		\end{itemize}
+	\end{enumerate}
+	
+	\item[13.] We want to show that the $n$-th roots of 1 (aside from 1) satisfy the cyclotomic equation $z^{n-1} + z^{n-2} + ... + z + 1 = 0$. 
+	
+	\begin{proof}
+		Let $z$ be the $n$-th root of unity where $n > 1$, implying that $z^n = 1$. Obviously, it follows $z^n - 1 = 0$. 
+		
+		\bigskip
+		
+		Using the identity $z^n - 1 = (z - 1)(z^{n - 1} + z^{n - 2} + ... + 1)$, this implies the right hand side must be zero as well. But because $z - 1$ is a non-zero quantity, it must be that 
+		\[z^{n - 1} + z^{n - 2} + ... + 1 = 0\]
+		as we set out to prove.
+	\end{proof}
+\end{enumerate}
+
+\section*{Wednesday}
+\paragraph{Lemma} The sequence $\{i^k\}$ takes on values of either $i, -1, -i, $ or $1$.
+
+\begin{proof}
+First, let $k \in \mathbb{N}$ be arbitrary and consider the following exhaustive cases.
+
+\paragraph{Case 1: k modulo 4 = 0} This implies that $k$ is a multiple of 4. Then, notice that 
+\[i^k = (i^4)^{k/4}\]
+Because $k$ is a multiple of 4, $k/4$ is an integer. Therefore, $i^n$ is simply a repeated multiplication of $i^4$. Because $i^4 = 1$, $i^n = 1$ also.
+\end{proof}
+
+\paragraph{Case 2: k modulo 4 = 1} This implies that $k - 1$ is a multiple of 4. Therefore,
+\[\begin{aligned}
+i^k
+&= i^{k-1} \cdot i \\
+&= 1 \cdot i & \text{$i^{k-1} = 1$ by Case 1}
+\end{aligned}\]
+
+\paragraph{Case 3: k modulo 4 = 2} This implies that $k - 2$ is a multiple of 4. Therefore,
+\[\begin{aligned}
+i^k
+&= i^{k-2} \cdot i^2 \\
+&= 1 \cdot i^2 = -1
+\end{aligned}\]
+
+\paragraph{Case 4: k modulo 4 = 3} This implies that $k - 3$ is a multiple of 4. Therefore,
+\[\begin{aligned}
+i^k
+&= i^{k-3} \cdot i^3 \\
+&= 1 \cdot i^3 = -i
+\end{aligned}
+\]
+
+\begin{enumerate}
+	\item Prove that $\{i^k\}$ is not a Cauchy sequence.
+	
+	\begin{proof}
+		Assume (for contradiction) that $\{i^k\}$ is a Cauchy sequence. This implies that for any $\epsilon > 0$, e.g. $\epsilon_1 = \frac{1}{2}$, we can find an $N$ such that for all $n, m > N$ where $|a_n - a_m| < \epsilon_1 = \frac{1}{2}$.
+		
+		\bigskip
+		
+		But as shown previously, for any $N$ there are some $n, m > N$ where $a_n = 1$ and $a_n = -1$. Because, $| 1 - (-1)| = 2 \nless \frac{1}{2}$, this contradicts our previous assumption that $\{i^k\}$ is Cauchy.
+	\end{proof}
+	
+	\item Prove that if $\{z_n\}$ converges to $z$, and $z_n$ is an element of the unit circle $S^1$ for all $n$, then $z$ is also in $S^1$.
+	
+	\begin{proof}
+		Assume that $\{z_n\}$ converges to $z$, where $z_n \in S^1$ for all $n$. 
+		Then suppose for a contradiction that $z$ is not in $S^1$. First, because $\{z_n\}$ converges to $z$ then for any $\epsilon > 0$ there is some $N$ such that for all $n > N, |z_n - z| < \epsilon$. Moreover, because $z_n$ is on the unit circle while $z$ is not, $|z_n - z|$ is always some positive quantity, call it $\epsilon_1$. Now suppose we pick some point on the unit circle that minimizes $\epsilon_1$ and call it $\epsilon_L$. Again, for the same reasoning $\epsilon_L > 0$.
+		
+		\bigskip
+		
+		However, recall that because $\{z_n\} \rightarrow z$, then for any $\epsilon > 0$, e.g. $\frac{\epsilon_L}{2}$, there is some $z_n$ such that $|z_n - z| < \frac{\epsilon_L}{2}$. Because $\frac{\epsilon_L}{2}$ is less than the minimum distance between any point on the unit circle and $z$, it it implies $z_n$ is not on the unit circle--contradicting our previous assumption that $z_n \in S^1$ for all $n$.
+		
+		\bigskip
+		
+		 Therefore, it must be that if $\{z_n\}$ converges to $z$, and $z_n$ is an element of the unit circle $S^1$ for all $n$, then $z$ is also in $S^1$.
+	\end{proof}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 3}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		August 14, 2017
+	\end{center}
+	
+\begin{enumerate}
+	\item[1.] Find the Laurent Series representation of 
+	\[f(z) = z^2 \sin{\frac{1}{z^2}}\]
+	for the domain $0 < |z| < \infty$.
+	
+	\paragraph{Solution} First, consider the MacLaurin series for $\sin{z}$. Because it is analytic everywhere, its radius of convergence is all of $\mathbb{C}$ 
+	
+	\[\sin{z} = \sum^{\infty}_{n=0} \frac{(-i)^n z^{2n+1}}{(2n+1)!} \]
+	
+	This implies,
+	\[\begin{aligned}
+	\sin{\frac{1}{z^2}}
+	&= \sum^{\infty}_{n=0} \frac{(-i)^n (\frac{1}{z^2})^{2n+1}}{(2n+1)!} \\
+	z^2\sin{\frac{1}{z^2}}
+	&= z^2 \sum^{\infty}_{n=0} \frac{(-i)^n (\frac{1}{z^2})^{2n+1}}{(2n+1)!} \\
+	&= \sum^{\infty}_{n=0} \frac{(-i)^n \cdot z^2 \cdot (\frac{1}{z^2})^{2n+1}}{(2n+1)!} \\
+	&= \sum^{\infty}_{n=0} \frac{(-i)^n (1)^{2n+1}}{(2n+1)!}
+	= \sum^{\infty}_{n=0} \frac{(-i)^n}{(2n + 1)!}
+	\end{aligned}\]
+	
+	\item[2.] Find the Laurent series representation of the function
+	\[f(z) = \frac{2}{(z+1)(z+3)} \]
+	
+	\paragraph{In the annulus $1 < |z| < 3$}
+	First, using partial fractions decomposition,
+	\[\begin{aligned}
+	f(z) &= \frac{1}{z+1} - \frac{1}{z+3} \\
+	&= \frac{1}{z}\frac{1}{1 + \frac{1}{z}} - \frac{1}{z}\frac{1}{1 + \frac{3}{z}} 
+	\end{aligned}\]
+	
+	Furthermore, the Taylor Series
+	\[f(z) = \frac{1}{1 + z} = \sum^{\infty}_{n = 0} (-1)^n z^n\]
+	for $|z| < 1$. This does not converge for our current domain, however, because $|z| > 1 \implies |\frac{1}{z}| < 1$ we can use the change of variables $z = \frac{1}{z}$.
+	
+	Thus,
+	\[\frac{1}{z} \cdot \frac{1}{1 + \frac{1}{z}} = \frac{1}{z}\cdot \sum^{\infty}_{n = 0} (-1)^n z^{-n}\]
+	
+	Moreover, we can substitute $z = \frac{3}{z}$ into the same Taylor Series above. From earlier, we had that $|\frac{1}{z}| < 1$, and because $|z| < 3$ implies $|\frac{1}{z}| > \frac{1}{3}$, we get that our representation works for $\frac{1}{3} < |\frac{1}{z}| < 1$, which is valid. In conclusion,
+	
+	\[\begin{aligned}f(z)
+		&= \frac{2}{(z+1)(z+3)} \\
+		&=
+		\frac{1}{z}\cdot \sum^{\infty}_{n = 0} (-1)^n z^{-n} +
+		\frac{1}{z}\cdot \sum^{\infty}_{n = 0} (-1)^n 3\cdot z^{-n} \\
+		&= \frac{1}{z} \sum^{\infty}_{n = 0} (-1)^n 4\cdot z^{-n}
+	\end{aligned}\]
+	
+	\paragraph{In the annulus $1 < |z - 3| < 3$}
+	...
+	
+	\item[3.] Find the Laurent Series representation of the function
+	\[f(z) = \frac{1 + 2z}{z^2 + z^3} \]
+	in the annulus $0 < |z| < 1$.
+	
+	\paragraph{Solution}
+	\[\begin{aligned}	
+	f(z) &= \frac{1 + z^2}{z^2 + z^3} \\
+	&= \frac{1}{z^2 + z^3} + \frac{2z}{z^2 + z^3} \\
+	&= \frac{1}{z^2}\frac{1}{1+z} + \frac{2z}{z}\frac{1}{1 + z} \\
+	\end{aligned}\]
+	
+	We know that $\frac{1}{1 - z}$ has the MacLaurin series representation $\sum^{\infty}_{n=0} z^n$ for $|z| < 1$. Furthermore, $\frac{1}{1 + z}= \sum^{\infty}_{n=0} (-1)^nz^n$ if we use the change of variables $-z = z$, which leads to the radius of convergence $|-z| = |z| < 1$. Thus, we have
+
+	\[\begin{aligned}
+	f(z) &= \frac{1}{z^2} \cdot \sum^{\infty}_{n=0} (-1)^nz^n + 2 \cdot \sum^{\infty}_{n=0} (-1)^nz^n \\
+	&= \frac{2}{z^2} \cdot \sum^{\infty}_{n=0} (-1)^nz^n
+	\end{aligned}\]
+	
+\end{enumerate}
+\end{document}
