@@ -1,0 +1,69 @@
+\documentclass[]{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{graphicx,tikz}
+
+%opening
+\title{Poles, Removable and Essential Singular Points}
+\author{Vincent La}
+
+\begin{document}
+
+\maketitle
+
+\section{Definitions}
+\paragraph{Principal Part} The terms in the Laurent series expansion of a function that contain negative exponents
+
+\paragraph{Pole} A singular point that contains only a finite number of terms with negative exponents
+
+\paragraph{Essential Singular Point} A singular point with an infinite number of terms with negative exponents
+
+\paragraph{Removable Singular Point} A singular point whose Laurent expansion contains only terms with positive exponents. All removable singular points have a residue of 0.
+
+\section{Exercises}
+\textbf{Source:} Complex Variables and Applications, Section 56
+
+\begin{enumerate}
+	\item[2.] Show that the singular point of each of the following functions is a pole. Determine the order $m$ of that pole and the corresponding residue $B$.
+	
+	\begin{enumerate}
+		\item
+		\item $\frac{1 - \exp{2z}}{z^4}$
+		
+	\paragraph{Solution}
+	Recall the MacLaurin series
+	\[e^z = \sum^{\infty}_{n=0} \frac{z^n}{n!} (|z| < 1) \]
+	
+	Then, write
+	\[\begin{aligned}
+		\frac{1 - \exp{2z}}{z^4}
+		&= \frac{1}{z^4} - \frac{\exp{2z}}{z^4} \\
+		&= \frac{1}{z^4} - \sum^{\infty}_{n=0} \frac{\frac{(2z)^n}{n!}}{z^4} \\
+		&= \frac{1}{z^4} - \sum^{\infty}_{n=0} \frac{(2z)^n}{n! \cdot z^4} \\
+		&= \frac{1}{z^4} - \sum^{\infty}_{n=0} \frac{2^n z^n}{n! \cdot z^4} \\
+		&= \frac{1}{z^4} - \sum^{\infty}_{n=0} \frac{2^n z^{ n - 4 }}{n!} \\
+	\end{aligned}\]
+	
+	Expanding the series, we get
+	\[\begin{aligned}
+		\frac{1 - \exp{2z}}{z^4}
+		&= \frac{1}{z^4} - \sum^{\infty}_{n=0} \frac{2^n z^{ n - 4 }}{n!} \\
+		&= \frac{1}{z^4} - [ \frac{2^0z^{-4}}{0!} + \frac{{2^1}z^{-3}}{1!}
+			+ \frac{2^2z^{-2}}{2!} + \mathbf{ \frac{2^3 z^{-1}}{3!} } + ... ] \\	
+	\end{aligned}\]
+	
+	Therefore, the $b_1$ term of the Laurent expansion (and therefore our residue) is
+	$-\frac{2^3}{3!} = -\frac{8}{6} = -\frac{4}{3}$.
+		
+	\paragraph{Answers}
+	(Provided by the book)
+	\begin{enumerate}
+		\item $m = 1, B = \frac{-1}{2}$,
+		\item $m = 3, B = \frac{-4}{3}$
+		\item $m = 2, B = 2e^2$
+	\end{enumerate}
+		
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

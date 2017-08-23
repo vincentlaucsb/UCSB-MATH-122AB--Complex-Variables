@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 6}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		August 22, 2017
+	\end{center}
+	
+\section{Homework}
+\begin{enumerate}
+	\item Write the principal part of the following functions at the singular point and determine whether that point is a pole, a removable singular point, or an essential singular point:
+		\begin{enumerate}
+			\item $\frac{z^2}{1 + z}$
+			\paragraph{Solution}
+			
+			This function has a singular point at $z = -1$.
+			First, we will find the Laurent series expansion. Notice that,
+			\[\begin{aligned}
+			z^2
+			&= [(z + 1)^2 - 2z - 1] \\
+			&= [(z + 1)^2 - 2(z + 1) + 1] \\
+			\end{aligned}\]
+			
+			Therefore,
+			\[
+			\begin{aligned}
+			\frac{z^2}{1 + z}
+			&= z^2 \cdot \frac{1}{1 + z} \\
+			&= [(z + 1)^2 - 2(z + 1) + 1] \cdot \frac{1}{1 + z} \\
+			&= \frac{(z + 1)^2 - 2(z + 1) + 1}{1 + z} \\
+			&= (z + 1) - 2 + \frac{1}{1 + z}
+			\end{aligned} \]
+			
+			By inspection, the principal part of this function is 
+			\[\frac{1}{1 + z}\]
+			so $z = -1$ is a pole of order 1.			
+			
+			\item $\frac{\sin{z}}{z}$
+			\paragraph{Solution}
+			First, we will try to find a Laurent series representation for $f(z)$.
+			
+			\[\begin{aligned}
+			\frac{\sin{z}}{z}
+			&= \frac{1}{z} \cdot \sin{z} \\
+			&= \frac{1}{z} \cdot \sum^{\infty}_{n=0} (-1)^n \frac{z^{2n + 1}}{(2n + 1!)}
+			& (|z| < \infty) \\
+			&= \frac{1}{z} \cdot [(-1)^0 \cdot \frac{z^1}{1!} +
+				(-1)^1 \frac{z^3}{3!} + (-1)^2\frac{z^5}{5!} + ...] & \text{Expanding the series} \\
+			\end{aligned}\]
+			
+			By inspection, this Laurent Series has no terms with negative exponents and is really just a regular power series. Therefore, it is a removable singular point.			
+		\end{enumerate}
+		
+	\item Show that the singular point of each function is a pole and determine its order $m$ and find the corresponding residue:
+		\begin{enumerate}
+			\item $(\frac{z}{2z + 1})^3$
+			\paragraph{Solution}
+			First, this function has singularities whenever $(2z + 1)^3 = 0$, implying $z = -\frac{1}{2}$ is a singular point.
+			
+			Now, notice that
+			\[\begin{aligned}
+			\frac{z}{2z + 1}
+			&= \frac{z}{2} \cdot \frac{1}{z + \frac{1}{2}} \\
+			\end{aligned}\]
+			
+			Furthermore, because $z = (z + \frac{1}{2}) - \frac{1}{2}$, the above is equivalent to
+			\[\begin{aligned}
+			\frac{z}{2z + 1}
+			&= \frac{(z + \frac{1}{2}) - \frac{1}{2}}{2} \cdot
+				\frac{1}{z + \frac{1}{2}} \\
+			&= \frac{1}{2} \cdot \frac{
+				(z + \frac{1}{2}) - \frac{1}{2}}{
+				z + \frac{1}{2}} \\
+			&= \frac{1}{2} \cdot [1 - \frac{0.5}{z + \frac{1}{2}}] \\
+			\end{aligned}\]
+			
+			Finally, we get
+			\[\frac{1}{2} - \frac{0.25}{z + \frac{1}{2}}\]
+			
+			Therefore, because there is only $(z - z_0)^n$ term with an exponent of $-1$, this is a pole of order 1 with residue 0.25.
+			
+			\item $\frac{\exp{z}}{z^2 + \pi^2}$
+			\paragraph{Solution}
+			Consider $z = \pi i$. At this point, the denominator $z^2 + \pi^2 = \pi^2 \cdot i^2 + \pi^2 = 0$, so $\pi i$ is a singular point.
+			
+			\bigskip
+			
+			First, let us find the Taylor Series of $\exp(z)$ about $z = \pi i$. Because
+			$\frac{d}{dz} \exp(z) = \exp(z)$, and $\exp(\pi i) = -1$,
+			\[\begin{aligned}
+			\frac{f^{(n)}(z_0)}{n!}
+			&= \frac{\exp(\pi i)}{n!} \\
+			&= \frac{-1}{n!} \\
+			\end{aligned}\]
+			
+			Thus, the Taylor Series of $\exp(z)$ centered at $\pi i$ is 
+			\[ f(z) = \sum^{\infty}_{n=0} \frac{-1}{n!} (z - \pi i)^n \]
+			which converges for all $z \in \mathbb{C}$.
+			
+			Notice that 
+			\[(z + \pi i)(z - \pi i)
+			= (z^2 - z\pi i + z\pi i - \pi^2 i^2)
+			= z^2 + \pi^2 \]
+			
+			Therefore,
+			\[\begin{aligned}
+			\frac{\exp{z}}{z^2 + \pi^2}
+			&= \frac{1}{(z + \pi i)(z - \pi i)} \cdot 
+				\sum^{\infty}_{n=0} \frac{-1}{n!} (z - \pi i)^n \\
+			&= \frac{1}{z + \pi i} \cdot 
+				\sum^{\infty}_{n=0} \frac{-(z - \pi i)^{n - 1}}{n!} \\
+		    \end{aligned}\]
+		    
+		    And the completion of this solution has been left as an exercise for the reader.
+		\end{enumerate}
+\end{enumerate}
+\end{document}
