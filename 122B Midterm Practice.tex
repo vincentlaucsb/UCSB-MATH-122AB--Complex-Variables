@@ -1,0 +1,300 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Midterm Practice}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		August 22, 2017
+	\end{center}
+	
+\section{Theorems}
+\paragraph{Residues at Poles}
+Suppose that a function $f(z)$ can be written in the form
+\[f(z) = \frac{\phi{z}}{z - z_0} \]
+where $\phi(z)$ is analytic at $z_0$ and $\phi(z_0) \neq 0$. Then, $f(z)$ has a Laurent series representation
+\[...\]
+and its residue is given by
+\[b_1 = \phi(z_0) \]
+	
+\section{Homework}
+\begin{enumerate}
+	\item[1.] 
+		\begin{enumerate}
+			\item Does the function $f(z) = \frac{e^z}{z}$ have a MacLaurin series representation?
+			
+			\paragraph{Solution} Yes.
+			
+			First, recall that
+			\[e^z = \sum^{\infty}_{n=0} \frac{z^n}{n!} \]
+			which converges for all $z \in \mathbb{C}$. Therefore,
+			\[\frac{e^z}{z} = \sum^{\infty}_{n=0} \frac{z^{n - 1}}{n!} \]
+			which converges for $0 < |z| < \infty$.
+			
+			\item Given the Laurent series representation
+			\[
+			\frac{5z - 2}{z(z - 1)} = \frac{3}{z - 1} + 2 - 2(z - 1) +
+			2(z - 1)^2 - 2(z - 1)^3 + ...
+			\]
+			$|z - 1| < 1$ determine whether the isolated singular point $z_0 = 1$ of 
+			$\frac{5z - 2}{z(z - 1)}$ is a pole of order $m$, a simple pole...
+			
+			\paragraph{Answer} The point $z_0 = 1$ is a simple pole (pole of order 1).
+			
+			\item Given the Laurent series expansion
+			\[f(z) = \frac{1}{z^2} + \frac{1}{z^2} + 1 + z + z^2 + z^3 + ...\]
+			which converges for $|z| < 1$, determine the residue of $f(z) = 0$.
+			
+			The residue is 0, because there is no $\frac{b_1}{z^1}$ term.
+			
+			\item Does there exist a power series $\sum_{n = 0} a_n z^n$ that converges at $z = 2 + 3i$ and diverges at $z = 3 - i$.
+			
+			\paragraph{Answer} Yes, and in fact there's an infinite number of them. Here, I will provide one example.
+			
+			First, notice that
+			\[\begin{aligned}
+			|2 + 3i|^2 &= \sqrt{2^2 + 3^2} = \sqrt{4 + 9} = \sqrt{13} \\
+			|3 - i|^2 &= \sqrt{3^2 + (-1)^2} = \sqrt{9 + 1} = \sqrt{10} \\
+			\end{aligned}\]
+			
+			Now, consider the power series
+			\[
+			\sum^{\infty}_{n=0} (\frac{4}{z})^n
+			\]
+			
+			If $|z| = \sqrt{13}$, then $\frac{4}{z} < 1$ and this series converges. However, if $|z| = \sqrt{10}$, then $\frac{4}{z} > 1$ and this series diverges.
+		\end{enumerate}
+	
+	\item[2.] ...
+	
+	\item[3.]
+	
+	\begin{enumerate}
+		\item Give two Laurent series expansions in powers of $z$ for the function
+		\[f(z) = \frac{1}{z^2(3 - z)} \]
+		and provide regions of validity.
+		
+		\paragraph{Solution about $z = 0$}
+		First, rewrite $f(z)$ as
+		\[f(z) = \frac{1}{z^2(3 - z)} = \frac{1}{3z^2} \cdot \frac{1}{1 - \frac{z}{3}} \]
+		
+		Now, recall the MacLaurin series
+		\[\frac{1}{1 - z} = \sum^{\infty}_{n=0} (-1)^nz^n \]
+		which converges for $|z| < 1$. Applying the change of variables $z = \frac{z}{3}$,
+		we get
+		\[\frac{1}{1 - z/3} = \sum^{\infty}_{n=0} (-1)^n (\frac{z}{3})^n \]
+		which converges for $|\frac{z}{3}| < 1 \implies |z| < 3$. 
+		
+		\bigskip
+		
+		Applying all of this, we get 
+		\[\begin{aligned}
+		f(z)
+		&= \frac{1}{3z^2} \cdot \frac{1}{1 - \frac{z}{3}} \\
+		&= \frac{1}{3z^2} \cdot \sum^{\infty}_{n=0} (-1)^n (\frac{z}{3})^n \\
+		&= \frac{1}{3z^2} \cdot \sum^{\infty}_{n=0} (\frac{-1}{3})^n z^n \\
+		&= \frac{1}{3} 	  \cdot \sum^{\infty}_{n=0} (\frac{-1}{3})^n z^{n-2}
+		& (0 < |z| < 3)\\
+		\end{aligned}\]
+		
+		\paragraph{Solution about $z = 1$} 
+	\end{enumerate}
+	
+	\item[4.]
+	\begin{enumerate}
+		\item Find the MacLaurin series representation of $\cos{z} = \frac{e^{iz} - e^{-iz}}{2}$
+		
+		\bigskip
+		
+		\[\cos{z} = \sum^{\infty}_{n=0} \frac{(-1)^n (z^{2n})}{(2^n)!} \]
+		
+		\begin{proof}
+			First, calculate and evaluate the first few derivatives of $\cos{z}$ at $z = 0$.
+			
+			\[\begin{aligned}
+			f^{(0)}(0) &= \cos{0} = 1 \\
+			f^{(1)}(0) &= -\sin{0} = 0 \\
+			f^{(2)}(0) &= -\cos{0} = -1 \\
+			f^{(3)}(0) &= \sin{0} = 0 \\
+			f^{(4)}(0) &= \cos{0} = 1 \\
+			\end{aligned}\]
+			
+			As we can see, the derivatives of $\cos{z}$ follow a predictable pattern. Continuing, using the general formula for a MacLaurin series
+			\[f(z) = \sum a_n z^n\]
+			implies that
+			\[\cos{z} = \sum^{\infty}_{\text{$n$ odd}} 0 +
+				\sum^{\infty}_{\text{$n$ even}} \frac{(-1)^{\frac{n}{2}}}{n!} \cdot (z^n) \]
+				
+			Furthermore, if $n$ is even, then there is some integer such that $n$ is divisible by $2$, i.e. $n = 2n$. Using this change of variables
+			
+			\[\cos{z} = \sum^{\infty}_{n=0} \frac{(-1)^n}{(2n)!} \cdot (z^{2n}) \]
+			
+			as we set out to prove.
+		\end{proof}
+		
+		\item Using the MacLaurin series representation for the function $\cos{z}$, find the MacLaurin series representation for $\sin{z}$
+	\end{enumerate}
+	
+	\item[6.] Find the first three non-zero terms in the MacLaurin expansion of
+	\[f(z) = \int_0^{z} e^{s^2} ds\]
+	
+	\paragraph{Solution} 
+	First, recall the MacLaurin Series
+	\[e^z = \sum^{\infty}_{n=0} \frac{z^n}{n!} \]
+	
+	Thus, letting $z = s^2$, we get 
+	\[e^{s^2} = \sum^{\infty}_{n=0} \frac{{s^2}^n}{n!} \]
+	which, like the original series, converges for all $|z| < \infty$.
+	
+	Now,
+	\[\begin{aligned}	
+	\int_0^z e^{s^2} ds
+	&= \int_0^z \sum^{\infty}_{n=0} \frac{{s^2}^n}{n!} ds \\
+	&= \sum^{\infty}_{n=0} \frac{
+		\int_0^z {s^2}^n ds }{n!} & \text{Integrate term by term} \\
+	&= \sum^{\infty}_{n=0} \frac{s^{2n + 1}}{(2n + 1) \cdot n!} \\
+	\end{aligned}\]
+	
+	Therefore, the first three non-zero terms are
+	\[
+	\frac{s^{2(0) + 1}}{(2\cdot0 + 1) \cdot 0!} + 
+	\frac{s^{2(0) + 1}}{(2\cdot1 + 1) \cdot 1!} +
+	\frac{s^{2(0) + 1}}{(2\cdot2 + 1) \cdot 2!}
+	\]
+	
+	\item[8.] Find residue at $z = 0$ of $\frac{1}{z^2 + z^3}$. 
+	
+	First, recall the MacLaurin series
+	\[ \frac{1}{1+z} = \sum^{\infty}_{n=0} (-1)^n z^n \]
+	which converges for $|z| <1$. Thus,
+	\[\begin{aligned}
+	\frac{1}{z^2} \cdot \frac{1}{1+z}
+	&= \sum^{\infty}_{n=0} (-1)^n z^{n-2} & (|z| < 1) \\
+	&= (-1)^0 z^{-2} + (-1)^1 z^{-1} + (-1)^2 z^0 + ... \\
+	&= z^{-2} - \mathbf{z^{-1}} + ... \\
+	\end{aligned}\]
+	
+	Therefore, $Res_{z=0} f(z) = 1$.
+	
+	\item[9.]
+		\begin{enumerate}
+			\item Use Cauchy's Residue Theorem to evaluate the integral around the circle 
+			$|z| = 3$ with a positive orientation fo $z^3 \cdot \exp{\frac{1}{z^2}}$
+			
+			\paragraph{Solution} To begin, we have an isolated singularity at $z = 0$. Then, recall the MacLaurin Series
+			\[e^z = \sum^{\infty}_{n=0} \frac{z^n}{n!} \]
+			
+			Using the change of variables $z = \frac{1}{z^2}$, we get
+			\[\begin{aligned}
+			z^3 \cdot \exp{\frac{1}{z^2}}
+			&= z^3 \sum^{\infty}_{n=0} \frac{(\frac{1}{z^2})^n
+				}{n!} \\
+			&= z^3 \sum^{\infty}_{n=0} \frac{z^{-2n}}{n!} \\
+			&= \sum^{\infty}_{n=0} \frac{z^{-2n + 3}}{n!} \\
+			\end{aligned}\]
+			
+			Expanding this series, we get
+			\[\frac{z^3}{0!} + \frac{z^{-2 + 3}}{1!} + \mathbf{\frac{z^{-4+3}}{2!}} + ...
+			\]
+			
+			Therefore our residue is $2! = 2$.
+			
+			\item ...
+		\end{enumerate}
+	
+	\item[10.] Write the principal part of the following functions at their singular point and determine whether that point is a pole, a removable singular point ,or an essential singular point:
+	
+	\begin{enumerate}
+		\item $z \exp{\frac{1}{z^3}} $
+		
+		\paragraph{Solution} First, notice that we have a singular point at $z = 0$. Then, recall the MacLaurin Series
+		\[e^z = \sum^{\infty}_{n=0} \frac{z^n}{n!} \]		
+		
+		Using the change of variables $z = \frac{1}{z^3}$, we get
+		\[\begin{aligned}
+		z \exp{\frac{1}{z^3}}
+		&= z \cdot \sum^{\infty}_{n=0} \frac{( \frac{1}{z^3} )^n}{n!} \\
+		&= z \cdot \sum^{\infty}_{n=0} \frac{z^{-3n}}{n!} \\
+		&= \sum^{\infty}_{n=0} \frac{z^{-3n + 1}}{n!} \\
+		\end{aligned}\]
+		
+		Expanding the series, we get
+		\[\frac{z^1}{0!} + \frac{z^{-3 + 1}}{1!} + \frac{z^{-6 + 1}}{2!} + ... \]
+		
+		Because this series has an infinite number of negative terms, it is an essential singular point.
+				
+		\item $\frac{z^3}{1 + z} $
+		
+		First, notice that $f(z)$ has a singularity when $z + 1 = 0 \implies z = -1$. Then, recall the MacLaurin Series
+		\[
+		\frac{1}{1 + z} = \sum^{\infty}_{n=0} (-1)^n z^n
+		\]
+		which converges for $|z| < 1$. Therefore,
+		\[\begin{aligned}
+		z^3 \cdot \frac{1}{1 + z}
+		&= z^3 \cdot \sum^{\infty}_{n=0} (-1)z^n & (|z| < 1) \\
+		&= \sum^{\infty}_{n=0} (-1)z^{n + 3} \\
+		\end{aligned}\]
+		
+		By looking at the exponents on $z$ within the sum, we can tell that this series has an infinite number of terms with positive exponents but none with negative ones. Therefore, $z = -1$ is a removal singular point.
+	\end{enumerate}
+	
+	\item[11.] Show that the singular point of each function is a pole and determine its order $m$ and the corresponding residue
+	
+	\begin{enumerate}
+		\item $\frac{z^2 + 2}{z^2 - 1}$
+		
+		\paragraph{Solution} First, notice that this function has two singular points that occur when
+		\[\begin{aligned}
+			z^2 - 1 &= 0 \\
+			z^2 &= 1 \\
+			z &= \pm \sqrt{1} \\
+			z &= \pm 1
+		\end{aligned}\]
+		
+		Also, I will be using the fact that
+		\[(z - 1)(z + 1) = z^2 - 1\]
+		
+		\begin{enumerate}
+			\item $\mathbf{z = 1}$
+			First, rewrite $f(z)$ as follows
+			\[\begin{aligned}
+			\frac{z^2 + 2}{z^2 - 1}
+			&= \frac{z^2 + 2}{(z - 1)(z + 1)} \\
+			&= \frac{z^2 + 2}{(z - 1)(z + 1)} \cdot
+				\frac{\frac{1}{z + 1}}{\frac{1}{z + 1}} \\
+			&= \frac{ \mathbf{\frac{z^2 + 2}{z + 1}} }{z - 1} \\
+			\end{aligned}\]
+			
+			Now, call the bolded part $\phi(z)$. Furthermore, notice that
+			$\phi(z)$ is analytic at $z = 1$ and that 
+			\[
+			\phi(1) = \frac{1^2 + 2}{1 + 1} = \frac{3}{2} \neq 0
+			\]
+			
+			Therefore, this point is a simple pole with residue $\frac{3}{2}$.
+			
+			\item $\mathbf{z = -1}$
+		\end{enumerate}
+		
+		\item $(\frac{z}{3z + 5})^3$
+	\end{enumerate}
+	
+	\item[12.] Evaluate the following integrals
+	
+\end{enumerate}
+\end{document}

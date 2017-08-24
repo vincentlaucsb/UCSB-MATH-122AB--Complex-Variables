@@ -1,6 +1,7 @@
 \documentclass[]{article}
 \usepackage[margin=1.25in]{geometry}
 \usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
 \usepackage{graphicx,tikz}
 
 %opening
@@ -11,5 +12,54 @@
 
 \maketitle
 
+\section{Formulas}
+\subsection{MacLaurin Series}
+\[\begin{aligned}
+f(z) &= \sum^{n}_{n=0} a_n z^n & \text{where } a_n = \frac{f^{(n)}(0)}{n!}
+\end{aligned}\]
+
+\section{Exponential Function}
+\subsection{MacLaurin Series}
+The MacLaurin series for $e^z$ is 
+\[e^z  = \sum^{\infty}_{n=0} \frac{z^n}{n!} \]
+which converges for $|z| < \infty$.
+
+\subsubsection{Formula for Series}
+\begin{proof}
+	Because $\frac{d}{dz} e^z = e^z$, $f^{(n)}(z) = e^z$ which implies $f^{(n)}(0) = 1$. 
+	
+	\bigskip
+	
+	Continuing, this means
+	\[a_n = \frac{1}{n!} \]
+	
+	so plugging into the general MacLaurin Series formula we get
+	\[e^z = \sum^{\infty}_{n=0} \frac{z^n}{n!}\]
+\end{proof}
+	
+\subsubsection{Convergence}
+\begin{proof}
+	Let $z \in \mathbb{C}$ be arbitrary and recall that
+	\[\sum^{\infty}_{n=0} \frac{z^n}{n!} = \lim_{n \rightarrow \infty} S_n \]
+	
+	Expanding the partial sum on the RHS, we get
+	\[
+	\lim_{n \rightarrow \infty} S_n
+	= \lim_{n \rightarrow \infty} \frac{z^0}{0!} + \frac{z^1}{1!} + \frac{z^2}{2!} +
+	... + \frac{z^n}{n!}
+	\]
+	
+	Now, let us show that the limit of the $n^{th}$ term (denoted $a_n$) is zero.
+	\[
+	\lim_{n \rightarrow \infty} a_n
+	= \lim_{n \rightarrow \infty} \frac{z^n}{n!}
+	= \lim_{n \rightarrow \infty} \frac{z \cdot z \cdot z \cdot z \cdot ... \cdot z \cdot ... \cdot z}{0 \cdot 1 \cdot 2 \cdot ... \cdot z \cdot ... \cdot n}
+	\]
+	
+	Because $\lim_{n \rightarrow \infty} \frac{z}{n} = 0$, by the limit of products
+	\[\lim_{n \rightarrow \infty} a_n = 0\]
+	
+	So, as $n \rightarrow \infty$, the $n^{th}$ term of the partial sum is 0, while all the preceding terms are finite. Therefore, $\sum^{\infty}_{n=0} \frac{z^n}{n!}$ converges for all $z$.
+\end{proof}
 
 \end{document}
