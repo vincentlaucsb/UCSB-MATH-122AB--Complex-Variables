@@ -41,7 +41,7 @@
 			\cos{i(-\pi i)} &= \cos{-\pi i^2} = \cos{\pi}\\			
 			\end{aligned}\]
 			
-		Both of these expressions are -1, so they share a common denominator.
+		Both of these expressions are -1, so our residues share a common denominator.
 		
 		\bigskip
 		
@@ -71,6 +71,17 @@
 	\[ \int_C \frac{dz}{\sinh{2z}} \]
 	about $C: |z| = 2$.
 	
-	\paragraph{Solution} 
+	\paragraph{Solution} First, notice that 
+	\[\sinh{2z} = i \sin{i 2z} \]
+	is differentiable everywhere except for the singularities that occur whenever $\sin{i 2z} = 0$. These occur when $z = \frac{i \pi n}{2}$ for $n \in \mathbb{Z}$. Within the circle $|z| = 2$, this gives us the isolated singular points
+	$z = 0, \pm \pi i, \pm 2 \pi i$. Now, applying the chain rule we get $\frac{d}{dz} \sinh{2z} = 2\cos{i 2z}$. Therefore, our residues are
+	\[\frac{1}{ \cos{0} } + \frac{1}{ \cos{\pm 2\pi}} + \frac{1}{ \cos{\pm 4\pi}} \]
+	
+	Now, recall that $\cos(0)$ is an even function with period $2\pi$, so the above is really just,
+	\[5 \cdot \frac{1}{ \cos{0} } = 5 \]
+	
+	Applying Cauchy's Residue Theorem,
+	\[\int_C \frac{dz}{\sinh{2z}} = 2\pi i \cdot \sum Res = 2\pi i \cdot 5 = 
+	  10\pi i\]
 \end{enumerate}
 \end{document}
