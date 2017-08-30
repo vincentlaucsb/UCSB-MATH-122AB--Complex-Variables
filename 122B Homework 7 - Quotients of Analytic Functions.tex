@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 7}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		August 29, 2017
+	\end{center}
+	
+\begin{enumerate}
+	\item Show that
+	\[Res_{z=\pi i} \frac{\exp{zt}}{\sinh{z}} + Res_{z=-\pi i} \frac{\exp{zt}}{\sinh{z}} = -2\cos{\pi t} \]
+	
+	\begin{proof}
+		Let us tackle this problem by separating evaluating the numerators and denominators.
+		
+		\bigskip
+		
+		First, let us evaluate the denominators. In general, because
+		$\sinh{z} = -i\sin{iz}$
+		it follows that 
+		$\frac{d}{dz} \sinh{z} = -i^2 \cdot \cos{iz} = \cos{iz}$
+		Therefore, the denominators are
+			\[\begin{aligned}
+			\cos{i(\pi i)} &= \cos{\pi i^2} = \cos{-\pi}\\
+			\cos{i(-\pi i)} &= \cos{-\pi i^2} = \cos{\pi}\\			
+			\end{aligned}\]
+			
+		Both of these expressions are -1, so they share a common denominator.
+		
+		\bigskip
+		
+		Then, recall the identity
+		$\exp{z} = \exp{x}\cos{y} + i \exp{x}\sin{y}$
+		where $x$ and $y$ are the real and imaginary parts of $z$ respectively. Therefore,
+		\[\begin{aligned}
+		\exp{\pi it}
+			&= \exp{0}\cos{\pi t} + i\exp{0} \sin{\pi t} \\
+			&= \cos{\pi t} + i\sin{\pi t} \\
+		\exp{-\pi it}
+			&= \exp{0}\cos{-\pi t} + i\exp{0} \sin{-\pi t} \\		
+			&= \cos{-\pi t} + i\sin{-\pi t}
+		\end{aligned}\]
+		
+		\bigskip
+		
+		Simplifying the original expression, we thus get
+		\[ Res_{z=\pi i} \frac{\exp{zt}}{\sinh{z}} + Res_{z=-\pi i} \frac{\exp{zt}}{\sinh{z}}
+		=  \frac{ (\cos{\pi t} + \cos{-\pi t}) + i( \sin{\pi t} + \sin{-\pi t} )}{
+				   -1} \]
+				
+		Because $\cos$ is an even function, and $\sin$ is an odd function, this simplifies to $-2\cos{\pi t}$ as we set out to prove.
+	\end{proof}
+			
+	\item Evaluate the integral
+	\[ \int_C \frac{dz}{\sinh{2z}} \]
+	about $C: |z| = 2$.
+	
+	\paragraph{Solution} 
+\end{enumerate}
+\end{document}
