@@ -1,0 +1,172 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 9}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		September 6, 2017
+	\end{center}
+	
+\begin{enumerate}
+	\item Evaluate the improper integral
+	\[ \int^{\infty}_0 \frac{\cos{ax}}{x^2 + 1} dx \]
+	
+	\paragraph{Solution} First, consider the function 
+	$e^{iax}$ and notice that
+	\[\begin{aligned}
+	Re[e^{iax}]
+	&= Re[e^0 \cos{ax} + ie^0 \sin{ax}] \\
+	&= \cos{ax} \\
+	\end{aligned}\]
+	
+	Thus, we can say that
+	\[
+	\lim_{R \rightarrow \infty} \int^R_{-R} \frac{\cos{ax}}{x^2 + 1} dx = 2\pi i Res(f) + Re \int_{C_R} \frac{\exp{iaz}}{z^2 + 1} dz 
+	\]
+	
+	Furthermore, because $|e^{iz}| = e^{-y} \leq 1$	
+	whenever $z$ is on $C_R$, and $y \geq 0$, this implies
+	
+	\[|Re \int_{C_R} \frac{\exp{iz}}{z^2 + 1} dz| \leq
+	  |\int_{C_R} \frac{\exp{iz}}{z^2 + 4} dz| \leq 
+	  \frac{\pi R}{R^2 + 4}\]
+	  
+	As $R \rightarrow \infty$, this quotient disappears, so we are just left with $2\pi i Res(f)$. 
+	
+	\bigskip
+	
+	Now, let us find $Res(f)$. The function $f(z) = \frac{\exp{iaz}}{z^2 + 1}$ has singularities whenever $z^2 + 1 = 0$, i.e. whenever $z = \pm i$. Here we are interested in the singularity $z = i$. Notice that
+	\[\begin{aligned} f(z) &= \phi(z) \cdot \frac{1}{z - i}
+	& \text{If $\phi(z) = \frac{e^{iaz}}{z + i}$} \end{aligned}\]
+	
+	At $z = i$, $\phi(z)$ is analytic, $p(z) = e^{iaz} \neq 0$, and $q(z) = z - i$ clearly has a zero. Thus, the residue of $f(z)$ at this $z = i$ is 
+	\[\phi(i) = \frac{e^{i^2a}}{2i} = \frac{e^{-a}}{2i}\]
+	
+	\bigskip
+	
+	Wrapping up from earlier, our integral is thus
+	\[ 2\pi i Res(f) = 2\pi i \cdot \phi(i) = \pi e^{-a} \]
+	
+	\item Evaluate the improper integral
+	\[ \int^{\infty}_0 \frac{x \sin{ax}}{x^4 + 4} dx \]
+	
+	\paragraph{Solution} First, notice that consider the function 
+	$e^{iax}$ and notice that
+	\[\begin{aligned}
+	Im[e^{iax}]
+	&= Im[e^0 \cos{ax} + ie^0 \sin{ax}] \\
+	&= \sin{ax} \\
+	\end{aligned}\]
+	
+	Thus, we can say that
+	\[
+	\lim_{R \rightarrow \infty} \int^R_{-R} \frac{\sin{ax}}{x^2 + 1} dx =
+	Im[2\pi i Res(f) + \int_{C_R} \frac{\exp{iaz}}{z^2 + 1} dz]
+	\]
+	
+	Furthermore, because $|e^{iaz}| = e^{-ay} \leq 1$	
+	whenever $z$ is on $C_R$, and $y \geq 0$, this implies
+	
+	\[|Im \int_{C_R} \frac{\exp{iaz}}{z^4 + 1} dz| \leq
+	|\int_{C_R} \frac{\exp{iaz}}{z^4 + 1} dz| \leq 
+	\frac{\pi R}{R^4 - 1}\]
+	
+	As $R \rightarrow \infty$, this quotient disappears, so we are just left with $2\pi i Res(f)$. 
+	
+	\bigskip
+	
+	This function $f(z)$ has a singularity at whenever $z^4 + 4 = 0$, i.e. there is a singularity whenever
+	\[\begin{aligned}
+		z^4 + 4 &= 0 \\
+		z^4 &= -4 \\
+		z^2 &= \sqrt{-4} = 2i \\
+		z &= \sqrt{2} i \\
+	\end{aligned}\]
+	
+	Finally, let us compute the residue of $f$ at $z = \sqrt{2}i$. First, because
+	\[(z^2 - 2i)(z^2 + 2i) = z^4 + 2i z^2 - 2i z^2 - 4i^2 = z^4 + 4\]
+	we can write
+    $f(z) = \frac{\phi(z)}{z^2 + 2i}$, where $\phi(z) = \frac{z \exp{az}}{z^2 - 2i}$. 	
+	Furthermore, at $z = \sqrt{2}i$
+	\begin{itemize}
+		\item $p(z) = z\exp{az} = \sqrt{2}i \cdot \exp{a \cdot \sqrt{2}i} \neq 0$
+		\item $q(z) = z^2 + 2i = (z - \sqrt{2}i)(z + \sqrt{2}i)$ has a zero
+		\item $\phi(z)$ is analytic
+	\end{itemize}
+	
+	Therefore, the residue there is 
+		\[\phi(\sqrt{2}i) 
+			= \frac{\sqrt{2}i \cdot \exp{(a \cdot \sqrt{2}i})}{
+			(\sqrt{2}i)^2 - 2i}
+			= \frac{\sqrt{2}i \cdot \exp{(a \cdot \sqrt{2}i})}{
+			-2 - 2i}\]
+	
+	and our integral is
+	\[2\pi i \cdot Im[\phi(\sqrt{2}i)]  = 2\pi i \cdot \frac{\sqrt{2}i \cdot \exp{(a \cdot \sqrt{2}i})}{
+		-2 - 2i}\]
+	
+	\item Find the Cauchy principal value of
+	\[ \int^{\infty}_{-\infty} \frac{(x + 1) \cos{x}}{x^2 + 4x + 5} dx \]
+	
+	\paragraph{Solution} First, notice that
+	
+	\[f(x) = Re[\frac{(x+1)e^{ix}}{x^2 + 4x + 5}]\]
+	
+	implying that
+	
+	\[\lim_{R \rightarrow \infty} \int^{R}_{-R} f(x) dx
+	= Re[2\pi i Res(\frac{(z+1)e^{iz}}{z^2 + 4z + 5})] \]
+	
+	Now, $f(z) = \frac{(z+1) \cos{x}}{z^2 + 4x 5}$ has isolated singularities whenever
+	$z^2 + 4x + 5 = 0$, i.e. whenever
+	
+	\[\begin{aligned}	
+		z
+		&= \frac{-4 \pm \sqrt{4^2 - 4(1)(5)}}{2} \\
+		&= \frac{-4 \pm \sqrt{16 - 20}}{2} \\
+		&= \frac{-4 \pm \sqrt{-4}}{2} \\
+		&= -2 \pm i
+	\end{aligned}\]
+	
+	Only $z = -2 + i$ lies in the region of interest. But before finding the residue there, apply the theorem about the residues of quotients. First, because
+	\[\begin{aligned}
+	(z - (-2 + i))(z - (-2 - i)) 
+	&= (z + (2 - i))(z + (2 + i)) \\
+	&= z^2 + (2 + i)z + (2 - i)z + (2-i)(2+i) \\
+	&= z^2 + (2z + 2z) + (iz - iz) + 4 + (2i - 2i) - i^2 \\
+	&= z^2 + 4z + 5
+	\end{aligned}\]
+	we can therefore write
+	\[f(z) = \frac{\frac{ (z + 1)e^{iz}}{z - (-2 - i)} }{
+		z - (-2 + i)}
+	= \frac{\phi(z)}{z - (-2 + i)} \]
+	
+	Furthermore, we because $\phi(z)$ is analytic at $z = -2 + i$, $p(-2 + i) = [(-2 + i) + 1]e^{iz} \neq 0$, and $q(z) = z - (-2 + i)$ clearly has a zero at $z = -2 + i$, the residue of $f(z)$ at $-2 + i$ is therefore
+	\[\begin{aligned}
+		\phi(-2 + i)
+		&= \frac{ ((-2 + i) + 1)e^{iz}}{(-2 + i) - (-2 - i)} \\
+		&= \frac{(i - 1)e^{i(i - 2)}}{2i} \\
+		&= \frac{(2 + 2i)e^{-1 - 2i}}{4} \\
+		&= \frac{(1 + i)e^{-1 - 2i}}{2}
+	\end{aligned}\]
+	This implies that
+	\[P.V. \int^{\infty}_{\infty} \frac{(x + 1) \cos{x}}{x^2 + 4x + 5} dx =
+	2\pi i \cdot b_1 =
+	\pi i \cdot (1 + i)e^{-1 - 2i} \]
+\end{enumerate}
+\end{document}

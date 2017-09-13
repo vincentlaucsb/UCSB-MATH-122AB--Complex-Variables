@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 8}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		September 5, 2017
+	\end{center}
+	
+\begin{enumerate}
+	\item Evaluate the improper integral \[\int_0^\infty \frac{dx}{(x^2 + 1)^2} \]
+	\paragraph{Solution}
+	We'll solve this by evaluating it over the complex axis of the real plane. First, notice that this is equivalent to the integral 
+	\[
+	\int^R_{-R} \frac{dx}{(x^2 + 1)^2} + \int_{C_R} \frac{dz}{(z^2 + 1)^2} = 2\pi i Res f(z)
+	\]
+	
+	Now, notice that our function has isolated singularities whenever $(z^2 + 1)^2 = 0 \implies z^2 = -1$ implying that $z = \pm i$. Therefore, we'll want to integrate over a semicircle of radius $R > 1$.
+	
+	\bigskip
+	
+	Moreover, whenever $z \in C_R$, this implies that $|z| = R$. Therefore, 
+	\[(z^2 + 1)^2 \geq ||z|^2 + 1|^2 = |R^2 + 1|^2 \]
+	
+	This then implies
+	\[\int_{C_R} \frac{dz}{(z^2 + 1)^2} \leq \frac{1}{|R^2 + 1|^2}  \cdot 
+      \int_{C_R} dz = \frac{\pi i}{(R^2 + 1)^2}\]
+      
+    Since the right hand side goes to zero as $R \rightarrow \infty$, the entire complex integral disappears. Finally, we just need to calculate the residue of $f(z)$ in $C_R$ at $z = i$. Recall that the residue of quotients, and we get
+    \[\begin{aligned}
+	\frac{p(z_0)}{q'(z_0)}
+	&= \frac{1}{[(z^2 + 1)^2]'} \\
+	&= \frac{1}{2(z^2 + 1) \cdot 2z} \\
+	&= 4z^3 + 4z
+    \end{aligned}\]
+    
+    Because f is even,
+    
+    \[\begin{aligned}
+    \int^\infty_{-\infty} \frac{dx}{(x^2 + 1)^2}
+    &= 2\pi i Res f(i) \\
+    &= 2\pi i(\frac{1}{4i^3 + 4})  \\
+    &= 2\pi i \cdot \frac{1}{4 - 4i}
+    \end{aligned}\]
+	
+	\item Evaluate the improper integral \[\int_0^\infty \frac{dx}{(x^2 + 1)(x^2 + 4)} \]
+	
+	\paragraph{Solution} We'll take roughly the same steps as above.
+	
+	
+	 First, notice that this is equivalent to the integral 
+	 \[
+	 \int^R_{-R} \frac{dx}{(x^2 + 1)(x^2 + 4)} +
+	 \int_{C_R} \frac{dz}{(z^2 + 1)(z^2 + 4)} = 2\pi i Res f(z)
+	 \]
+	
+	Using a similar argument to problem 1, we can show that the complex integral disappears. If I weren't so tired, I could probably come up with a better argument that this flimsy sentence.
+	
+	\bigskip Now, notice that the function
+	\[\frac{1}{(z^2 + 1)(z^2 + 4)}\] has isolated singularities whenever
+	 $(z^2 + 1)(z^2 + 4) = 0$ or equivalently, whenever $z^4 + 5z^2 + 4 = 0$.
+	 
+	Applying the quadratic formula, this implies
+	\[\begin{aligned}
+	z^2
+	&= \frac{-5 + \sqrt{5^2 - 4\cdot 1 \cdot 4}}{2} \\
+	&= \frac{-5 + \sqrt{25 - 16}}{2} \\
+	&= \frac{-5 + 3}{2} \\
+	&= -4
+	\end{aligned}\]
+	
+	Therefore, we have singularities whenever $z = 2i$. Finally, we just have to compute the residues and I can finally be done with this problem. But before doing that, notice that
+	\[\begin{aligned}
+	\frac{d}{dz} (z^2 + 1)(z^2 + 4) &=
+	2z \cdot (z^2 + 4) - 2z \cdot (z^2 + 1) \\
+	8z - 2z = 6z
+	\end{aligned} \]
+	
+	Furthermore, recall that the residue of a quotient implies that our residue is simply
+    $\frac{1}{6z}$ evaluated at $z = 2i$. Therefore, our original integral is equal to $2\pi i \cdot \frac{\pi}{12i} = \frac{1}{6i}$.
+	
+	\item Find the Cauchy principal value of
+	\[\int_{-\infty}^{\infty} \frac{x dx}{(x^2 + 1)(x^2 + 2x + 2)} \]
+	
+	\paragraph{Solution}
+	
+	First, let us identify the singularities of 
+	\[\frac{z}{(z^2 + 1)(z^2 + 2z + 2) = 0} \]
+	
+	This function is singular whenever either $(z^2 + 1) = 0$ or $z^2 + 2z + 2 = 0$. For the first equation, this implies there are isolated singularities at $z = \pm i$. For the second, applying the quadratic equation and we get
+	\[\begin{aligned}
+	z
+	&= \frac{-2 \pm \sqrt{2^2 - 4(1)(2)}}{2} \\
+	&= \frac{-2 \pm \sqrt{4 - 8}}{2} \\
+	&= \frac{-2 \pm 2i}{2}
+	&= -1 \pm 1i
+	\end{aligned}\]
+	
+	Because the principal value is simply
+	\[P.V. \int^\infty_{-\infty} f(x) dx = 2\pi i Res f(x) \]
+
+	 and the residue of the quotient is simply the following quantity evaluated at
+	 $z = -1 + i$
+	\[\begin{aligned}
+	\frac{z}{(z^2 + 1)(z^2 + 2z + 2)} 
+	&= \frac{z}{[(z^2 + 1)(z^2 + 2z + 2)]']} \\
+	&= \frac{z}{2z(z^2 + 2z + 2) - (2z + 2)(z^2 + 1)} \\
+	&= 2z \\
+	\end{aligned}\]
+	
+	The principal value is $2\pi i \cdot 2 \cdot (-1 + i) = 4(-1 + i)$.
+\end{enumerate}
+\end{document}

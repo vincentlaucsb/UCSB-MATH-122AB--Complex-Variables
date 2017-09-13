@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.25in]{geometry}
+
+\usepackage{graphicx,tikz}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{boondox-cal}
+\title{ }
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+	%\maketitle
+	%\date
+	\begin{center}	% centers
+		\Large{Homework 10}	% Large makes the font larger, put title inside { }
+	\end{center}
+	\begin{center}
+		Vincent La \\
+		Math 122B \\
+		September 11, 2017
+	\end{center}
+	
+\begin{enumerate}
+	\item Evaluate the improper integral
+	\[ \int^{\infty}_0 \frac{x^3 \sin{x}}{(x^2 + 1)(x^2 + 9)} dx \]
+	
+	First, we need to evaluate
+	\[
+	\lim_{R\rightarrow \infty} \int^R_{-R} \frac{x^3 \sin{x}}{(x^2 + 1)(x^2 + 9)} dx
+	+ \int_{C_R} \frac{z^3 \exp{iz}}{(z^2 + 1)(z^2 + 9)} dz
+	= 2\pi i Res f(z)
+	\]
+	
+	Furthermore, $f(z)$ has isolated singularities whenever
+	$z^2 + 1 = 0$ and $z^2 + 9 = 0$ implying that $z = \pm i$ and $z = \pm 3i$. Thus, let $R > 3$.
+	
+	We are primarily concerned with the residues at $z = i$ and $z = 3i$. 
+	
+	\paragraph{Residue at $z = i$} First, notice that we can write $f(z)$ as
+	\[f(z) = \frac{z^3 \exp{iz}}{(z^2 + 9)(z + i)} \cdot \frac{1}{z - i}
+	       = \frac{\phi{(z)}}{z - i}\]
+	
+	Because, $\phi(i) = \frac{i^3 \exp{i^2}}{(i^2 + 9)(i + i)} \neq 0$, $q(i) = 0$, and $q'(i) = 1 \neq 0$, $z = i$ is therefore a pole of order 1 at $z = i$ where
+	\[Res f(i) = \phi(i) = \frac{i^3 \cdot \exp{i^2}}{8 \cdot -1}
+	= \frac{i \exp{-1}}{8}
+	\]
+	
+	\paragraph{Residue at $z = 3i$} First, notice that we can write $f(z)$ as
+	\[f(z) = \frac{z^3 \exp{iz}}{(z + 3i)(z^2 + 1)} \cdot \frac{1}{z - 3i}
+	= \frac{\phi{(z)}}{z - 3i}\]
+	
+	Because, $\phi(i) = \frac{(3i)^3 \exp{3i^2}}{ (3i + 3i) ((3i)^2 + 1)} \neq 0$, $q(i) = 0$, and $q'(i) = 1 \neq 0$, $z = 3i$ is therefore a pole of order 1 at $z = i$ where
+	\[Res f(i) =
+	 \phi(i) = \frac{(3i)^3 \exp{3i^2}}{ (3i + 3i) ((3i)^2 + 1)}
+	 = \frac{3^3 i^3 \exp{-3}}{6i \cdot (-8)}
+	 = \frac{27 \cdot -i \cdot \exp{-3}}{-48i}
+	 = \frac{9 \cdot \exp{-3}}{16} \]
+	
+	\paragraph{Value of $\int f(z)$}
+	Whenever $z \in C_R$, because $x \geq 0$ we get that
+	\[\begin{aligned}
+	| Im \int \frac{z^3e^{iz}}{(z^2 + 1)(z^2 + 9)} | 
+	&\leq \int | \frac{z^3e^{iz}}{(z^2 + 1)(z^2 + 9)} | \\
+	&\leq | \frac{\pi \cdot R^4}{(R^2 + 1)(R^2 + 9)} | \\
+	&= \frac{R^4}{R^4 + 10R^2 + 9}
+	\end{aligned}\]
+	
+	Because the quotient dominates this fraction as $R \rightarrow \infty$, we can say that $\int f(z) \rightarrow 0$ as $R \rightarrow \infty$.
+	
+	\paragraph{Conclusion}
+	By equating imaginary parts, we get 
+	\[\begin{aligned}
+	\lim_{R\rightarrow \infty} \int^R_{-R} \frac{x^3 \sin{x}}{(x^2 + 1)(x^2 + 9)} dx
+	&= Im(2\pi i Res f(z)) - Im (\int_{C_R} \frac{z^3 \exp{iz}}{(z^2 + 1)(z^2 + 9)} dz) \\
+	&= Im(2\pi i Res f(z)) \\
+	&= 2\pi i \cdot \frac{\exp{-1}}{8}
+	\end{aligned} \]
+	
+	\item \[\int^{\infty}_0 \frac{\cos{(ax)} - \cos{(bx)}}{x^2} dx = \frac{\pi}{2}(b - a) \]
+	
+	\paragraph{Solution} ...
+\end{enumerate}
+\end{document}
